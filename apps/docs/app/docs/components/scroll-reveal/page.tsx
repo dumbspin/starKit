@@ -33,7 +33,7 @@ export default function ScrollRevealDocs() {
         </Preview>
 
         <CodeBlock
-          code={`import { ScrollReveal, Card } from "starkit";
+          code={`import { ScrollReveal, Card } from "starkit-ui";
 
 <ScrollReveal animation="slide-up" delay={150}>
   <Card>Revealed Content</Card>
@@ -53,3 +53,4 @@ export default function ScrollRevealDocs() {
     </>
   );
 }
+

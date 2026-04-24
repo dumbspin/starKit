@@ -18,14 +18,14 @@
 ## Install
 
 ```bash
-npm install starkit
+npm install starkit-ui
 ```
 
 ## Quick Start
 
 ```tsx
-import { Button, Card, Badge } from 'starkit';
-import 'starkit/styles';
+import { Button, Card, Badge } from 'starkit-ui';
+import 'starkit-ui/styles';
 
 function App() {
   return (

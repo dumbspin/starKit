@@ -199,8 +199,8 @@ export default function ButtonPage() {
         <h2 className="doc-section__title">Usage</h2>
         <CodeBlock
           filename="App.tsx"
-          code={`import { Button } from 'starkit';
-import 'starkit/styles';
+          code={`import { Button } from 'starkit-ui';
+import 'starkit-ui/styles';
 
 function App() {
   return (
@@ -231,3 +231,4 @@ function App() {
     </>
   );
 }
+

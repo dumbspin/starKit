@@ -12,7 +12,7 @@ export interface StickySectionProps extends Omit<HTMLAttributes<HTMLDivElement>,
 
 export const StickySection = React.forwardRef<HTMLDivElement, StickySectionProps>(
   ({ trackHeight = '300vh', children, className = '', ...rest }, ref) => {
-    const trackRef = useRef<HTMLDivElement>(null);
+    const trackRef = useRef<HTMLDivElement | null>(null);
     const [progress, setProgress] = useState(0);
 
     useEffect(() => {

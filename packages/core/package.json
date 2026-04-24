@@ -1,12 +1,12 @@
 {
-  "name": "starkit",
+  "name": "starkit-ui",
   "version": "0.1.0",
   "description": "Neo-brutalist React UI library",
   "main": "./dist/index.js",
   "module": "./dist/index.mjs",
   "types": "./dist/index.d.ts",
   "bin": {
-    "starkit": "./dist/cli.js"
+    "starkit-ui": "./dist/cli.js"
   },
   "exports": {
     ".": {

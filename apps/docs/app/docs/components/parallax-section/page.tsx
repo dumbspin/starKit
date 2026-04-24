@@ -31,7 +31,7 @@ export default function ParallaxSectionDocs() {
         </Preview>
 
         <CodeBlock
-          code={`import { ParallaxSection } from "starkit";
+          code={`import { ParallaxSection } from "starkit-ui";
 
 <ParallaxSection
   speed={0.4}
@@ -54,3 +54,4 @@ export default function ParallaxSectionDocs() {
     </>
   );
 }
+

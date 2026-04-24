@@ -68,7 +68,7 @@ export default function TabsPage() {
 
       <h2>Usage</h2>
       <CodeBlock
-        code={`import { Tabs } from 'starkit';
+        code={`import { Tabs } from 'starkit-ui';
 
 <Tabs
   items={[
@@ -93,3 +93,4 @@ export default function TabsPage() {
     </div>
   );
 }
+

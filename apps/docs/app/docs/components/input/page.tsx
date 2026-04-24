@@ -217,7 +217,7 @@ export default function InputPage() {
         <h2 className="doc-section__title">Usage</h2>
         <CodeBlock
           filename="LoginForm.tsx"
-          code={`import { Input, Button } from 'starkit';
+          code={`import { Input, Button } from 'starkit-ui';
 
 function LoginForm() {
   return (
@@ -256,3 +256,4 @@ function LoginForm() {
     </>
   );
 }
+

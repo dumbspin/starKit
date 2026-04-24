@@ -45,9 +45,9 @@ export default function CopyButtonPage() {
         <h2 className="doc-section__title">Usage</h2>
         <Preview
           title="Click to copy text"
-          code={`<CopyButton value="npm install starkit">Copy Install Command</CopyButton>`}
+          code={`<CopyButton value="npm install starkit-ui">Copy Install Command</CopyButton>`}
         >
-          <CopyButton value="npm install starkit">Copy Install Command</CopyButton>
+          <CopyButton value="npm install starkit-ui">Copy Install Command</CopyButton>
         </Preview>
       </section>
 
@@ -75,3 +75,4 @@ export default function CopyButtonPage() {
     </>
   );
 }
+

@@ -12,8 +12,8 @@ export interface ParallaxSectionProps extends HTMLAttributes<HTMLDivElement> {
 
 export const ParallaxSection = React.forwardRef<HTMLDivElement, ParallaxSectionProps>(
   ({ speed = 0.5, background, children, className = '', ...rest }, ref) => {
-    const containerRef = useRef<HTMLDivElement>(null);
-    const bgRef = useRef<HTMLDivElement>(null);
+    const containerRef = useRef<HTMLDivElement | null>(null);
+    const bgRef = useRef<HTMLDivElement | null>(null);
     const [prefersReducedMotion, setPrefersReducedMotion] = useState(false);
 
     useEffect(() => {

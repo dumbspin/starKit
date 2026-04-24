@@ -34,7 +34,7 @@ export default function ScrollBlurDocs() {
         </Preview>
 
         <CodeBlock
-          code={`import { ScrollBlur, Card } from "starkit";
+          code={`import { ScrollBlur, Card } from "starkit-ui";
 
 <ScrollBlur delay={200}>
   <Card>Unblurred Content</Card>
@@ -53,3 +53,4 @@ export default function ScrollBlurDocs() {
     </>
   );
 }
+

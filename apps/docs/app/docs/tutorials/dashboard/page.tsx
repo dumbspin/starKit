@@ -20,7 +20,7 @@ export default function BuildDashboardTutorial() {
           <p style={{ margin: "16px 0" }}>
             Every dashboard needs a navigation bar. We will use the <code>Navbar</code> component and place our dashboard content below it.
           </p>
-          <CodeBlock code={`import { Navbar, Button } from "starkit";
+          <CodeBlock code={`import { Navbar, Button } from "starkit-ui";
 
 export default function DashboardLayout({ children }) {
   return (
@@ -48,7 +48,7 @@ export default function DashboardLayout({ children }) {
           <p style={{ margin: "16px 0" }}>
             Use a CSS Grid layout with the <code>Card</code> component to display key metrics at the top of your dashboard.
           </p>
-          <CodeBlock code={`import { Card } from "starkit";
+          <CodeBlock code={`import { Card } from "starkit-ui";
 
 export function MetricsGrid() {
   return (
@@ -75,7 +75,7 @@ export function MetricsGrid() {
           <p style={{ margin: "16px 0" }}>
             Now, let's add the <code>DataTable</code> to display recent transactions or user lists. We can use the <code>Badge</code> component inside our columns for status indicators.
           </p>
-          <CodeBlock code={`import { DataTable, Badge } from "starkit";
+          <CodeBlock code={`import { DataTable, Badge } from "starkit-ui";
 
 export function UsersTable() {
   const columns = [
@@ -123,3 +123,4 @@ export function UsersTable() {
     </>
   );
 }
+

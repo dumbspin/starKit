@@ -63,7 +63,7 @@ export default function ModalPage() {
 
       <h2>Usage</h2>
       <CodeBlock
-        code={`import { Modal, Button } from 'starkit';
+        code={`import { Modal, Button } from 'starkit-ui';
 
 function Example() {
   const [open, setOpen] = useState(false);
@@ -103,3 +103,4 @@ function Example() {
     </div>
   );
 }
+

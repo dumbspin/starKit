@@ -56,7 +56,7 @@ export default function ToastPage() {
 
       <h2>Usage</h2>
       <CodeBlock
-        code={`import { ToastProvider, useToast, Button } from 'starkit';
+        code={`import { ToastProvider, useToast, Button } from 'starkit-ui';
 
 // 1. Wrap your app
 function App() {
@@ -104,3 +104,4 @@ function MyComponent() {
     </div>
   );
 }
+

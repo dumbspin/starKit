@@ -25,7 +25,7 @@ export const ScrollBlur = React.forwardRef<HTMLDivElement, ScrollBlurProps>(
     }, 
     ref
   ) => {
-    const elementRef = useRef<HTMLDivElement>(null);
+    const elementRef = useRef<HTMLDivElement | null>(null);
     const [isVisible, setIsVisible] = useState(false);
     const [hasRevealed, setHasRevealed] = useState(false);
 

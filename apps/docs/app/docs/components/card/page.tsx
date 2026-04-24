@@ -161,7 +161,7 @@ export default function CardPage() {
         <h2 className="doc-section__title">Usage</h2>
         <CodeBlock
           filename="Dashboard.tsx"
-          code={`import { Card, Badge } from 'starkit';
+          code={`import { Card, Badge } from 'starkit-ui';
 
 function Dashboard() {
   return (
@@ -193,3 +193,4 @@ function Dashboard() {
     </>
   );
 }
+

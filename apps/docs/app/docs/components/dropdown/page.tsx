@@ -69,7 +69,7 @@ export default function DropdownPage() {
 
       <h2>Usage</h2>
       <CodeBlock
-        code={`import { Dropdown } from 'starkit';
+        code={`import { Dropdown } from 'starkit-ui';
 
 <Dropdown
   trigger="Actions"
@@ -97,3 +97,4 @@ export default function DropdownPage() {
     </div>
   );
 }
+

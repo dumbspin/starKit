@@ -38,7 +38,7 @@ export default function StickySectionDocs() {
         </Preview>
 
         <CodeBlock
-          code={`import { StickySection } from "starkit";
+          code={`import { StickySection } from "starkit-ui";
 
 <StickySection trackHeight="200vh">
   {(progress) => (
@@ -60,3 +60,4 @@ export default function StickySectionDocs() {
     </>
   );
 }
+

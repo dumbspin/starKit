@@ -200,7 +200,7 @@ export default function BadgePage() {
         <h2 className="doc-section__title">Usage</h2>
         <CodeBlock
           filename="StatusCard.tsx"
-          code={`import { Badge, Card } from 'starkit';
+          code={`import { Badge, Card } from 'starkit-ui';
 
 function StatusCard({ status }) {
   const variant = status === 'up' ? 'success' : 'danger';
@@ -227,3 +227,4 @@ function StatusCard({ status }) {
     </>
   );
 }
+

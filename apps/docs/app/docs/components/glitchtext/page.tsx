@@ -59,7 +59,7 @@ export default function GlitchTextPage() {
 
       <h2>Usage</h2>
       <CodeBlock
-        code={`import { GlitchText } from 'starkit';
+        code={`import { GlitchText } from 'starkit-ui';
 
 // Hero heading
 <GlitchText text="BUILD BOLD UIs" size="lg" />
@@ -83,3 +83,4 @@ export default function GlitchTextPage() {
     </div>
   );
 }
+

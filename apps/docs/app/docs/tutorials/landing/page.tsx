@@ -20,7 +20,7 @@ export default function BuildLandingTutorial() {
           <p style={{ margin: "16px 0" }}>
             The hero section needs to be bold. We use a vibrant background color (<code>var(--brut-yellow)</code>) and thick borders to make it stand out.
           </p>
-          <CodeBlock code={`import { Button } from "starkit";
+          <CodeBlock code={`import { Button } from "starkit-ui";
 
 export function Hero() {
   return (
@@ -51,7 +51,7 @@ export function Hero() {
             Below the hero, we can use <code>Card</code> components to showcase the key features of the product. 
             Varying the card background colors adds that signature playful yet aggressive brutalist aesthetic.
           </p>
-          <CodeBlock code={`import { Card } from "starkit";
+          <CodeBlock code={`import { Card } from "starkit-ui";
 
 export function Features() {
   return (
@@ -87,7 +87,7 @@ export function Features() {
           <p style={{ margin: "16px 0" }}>
             A common pattern is toggling between Monthly and Yearly pricing. We can achieve this elegantly using the <code>Tabs</code> component.
           </p>
-          <CodeBlock code={`import { Tabs, Card, Button } from "starkit";
+          <CodeBlock code={`import { Tabs, Card, Button } from "starkit-ui";
 
 export function Pricing() {
   const tabs = [
@@ -130,3 +130,4 @@ export function Pricing() {
     </>
   );
 }
+

@@ -5,7 +5,7 @@ import { Header } from "./components/Header";
 
 export default function Home() {
   const handleCopy = () => {
-    navigator.clipboard.writeText("npm install starkit");
+    navigator.clipboard.writeText("npm install starkit-ui");
   };
 
   return (
@@ -43,7 +43,7 @@ export default function Home() {
 
         <div className="doc-hero__install doc-install">
           <span className="doc-install__prefix">$</span>
-          <span className="doc-install__cmd">npm install starkit</span>
+          <span className="doc-install__cmd">npm install starkit-ui</span>
           <button className="doc-install__copy" onClick={handleCopy}>
             Copy
           </button>

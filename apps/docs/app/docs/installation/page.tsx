@@ -16,15 +16,15 @@ export default function InstallationPage() {
       <section className="doc-section">
         <h2 className="doc-section__title">1. Install the package</h2>
         <CodeBlock
-          code={`npm install starkit`}
+          code={`npm install starkit-ui-ui`}
           lang="bash"
           filename="terminal"
         />
         <p style={{ marginBottom: 24, color: "var(--doc-gray-600)" }}>
           Or with your preferred package manager:
         </p>
-        <CodeBlock code={`yarn add starkit`} lang="bash" filename="yarn" />
-        <CodeBlock code={`pnpm add starkit`} lang="bash" filename="pnpm" />
+        <CodeBlock code={`yarn add starkit-ui-ui`} lang="bash" filename="yarn" />
+        <CodeBlock code={`pnpm add starkit-ui-ui`} lang="bash" filename="pnpm" />
       </section>
 
       <section className="doc-section">
@@ -35,7 +35,7 @@ export default function InstallationPage() {
         </p>
         <CodeBlock
           code={`// app/layout.tsx or main.tsx
-import 'starkit/styles';`}
+import 'starkit-ui/styles';`}
           filename="layout.tsx"
         />
       </section>
@@ -47,7 +47,7 @@ import 'starkit/styles';`}
           TypeScript.
         </p>
         <CodeBlock
-          code={`import { Button, Card, Badge, Input } from 'starkit';
+          code={`import { Button, Card, Badge, Input } from 'starkit-ui';
 
 export function MyPage() {
   return (
@@ -124,3 +124,4 @@ export function MyPage() {
     </>
   );
 }
+
