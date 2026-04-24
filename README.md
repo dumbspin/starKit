@@ -46,10 +46,22 @@ function App() {
 
 StarKit provides a CLI to add components directly to your source code, giving you full control to modify them:
 
+### Initialize all components
+To install all components and global styles at once:
 ```bash
-npx starkit add <component-name>
+npx starkit-ui init
+```
+
+### Add specific components
+To add a single component:
+```bash
+npx starkit-ui add
+```
+
+```bash
+npx starkit-ui add <component-name>
 # Example:
-npx starkit add Button
+npx starkit-ui add Button
 ```
 
 The CLI will detect your project structure and copy the `.tsx` and `.css` files into your components directory.

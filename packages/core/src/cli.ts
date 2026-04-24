@@ -8,7 +8,7 @@ import pc from 'picocolors';
 const program = new Command();
 
 program
-  .name('starkit')
+  .name('starkit-ui')
   .description('CLI to add StarKit components to your project')
   .version('0.1.0');
 
@@ -18,6 +18,57 @@ const COMPONENTS = [
   'Tabs', 'Toast', 'Dropdown', 'GlitchText',
   'Skeleton', 'FormField', 'Accordion', 'Navbar', 'DataTable'
 ];
+
+program
+  .command('init')
+  .description('Install all StarKit components and styles into your project')
+  .action(async () => {
+    try {
+      const cwd = process.cwd();
+      let isSrcDir = fs.existsSync(path.join(cwd, 'src'));
+
+      const response = await prompts({
+        type: 'text',
+        name: 'dir',
+        message: 'Where would you like to place the components?',
+        initial: isSrcDir ? 'src/components/starkit' : 'components/starkit'
+      });
+
+      if (!response.dir) return;
+
+      const packageRoot = path.resolve(__dirname, '..');
+      
+      console.log(pc.cyan('\n🚀 Initializing StarKit...'));
+
+      // 1. Copy all components
+      for (const component of COMPONENTS) {
+        const sourceDir = path.join(packageRoot, 'src', 'components', component);
+        const targetDir = path.join(cwd, response.dir, component);
+        
+        if (fs.existsSync(sourceDir)) {
+          await fs.ensureDir(targetDir);
+          await fs.copy(sourceDir, targetDir);
+          console.log(pc.green(`✔ Added ${component}`));
+        }
+      }
+
+      // 2. Copy global styles
+      const styleDir = path.join(cwd, isSrcDir ? 'src/styles' : 'styles');
+      const tokensSrc = path.join(packageRoot, 'src', 'tokens.css');
+      const sharedSrc = path.join(packageRoot, 'src', 'shared.css');
+      
+      await fs.ensureDir(styleDir);
+      await fs.copy(tokensSrc, path.join(styleDir, 'tokens.css'));
+      await fs.copy(sharedSrc, path.join(styleDir, 'shared.css'));
+
+      console.log(pc.bold(pc.green('\n✨ StarKit initialized successfully!')));
+      console.log(pc.cyan(`All components added to ${response.dir}/`));
+      console.log(pc.cyan(`Global styles added to ${isSrcDir ? 'src/styles/' : 'styles/'}\n`));
+      
+    } catch (error) {
+      console.error(pc.red('Error initializing StarKit:'), error);
+    }
+  });
 
 program
   .command('add')

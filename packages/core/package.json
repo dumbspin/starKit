@@ -1,6 +1,6 @@
 {
   "name": "starkit-ui",
-  "version": "0.1.0",
+  "version": "0.1.2",
   "description": "Neo-brutalist React UI library",
   "main": "./dist/index.js",
   "module": "./dist/index.mjs",
