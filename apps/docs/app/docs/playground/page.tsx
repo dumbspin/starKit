@@ -15,7 +15,7 @@ export default function PlaygroundPage() {
   const [btnFullWidth, setBtnFullWidth] = useState(false);
 
   // Input State
-  const [inpVariant, setInpVariant] = useState<"default" | "outline" | "filled">("default");
+  const [inpVariant, setInpVariant] = useState<"default" | "outline">("default");
   const [inpSize, setInpSize] = useState<"sm" | "md" | "lg">("md");
   const [inpDisabled, setInpDisabled] = useState(false);
   const [inpError, setInpError] = useState(false);
@@ -121,7 +121,6 @@ export default function PlaygroundPage() {
                 <select value={inpVariant} onChange={(e) => setInpVariant(e.target.value as any)} style={{ padding: "8px", border: "var(--brut-border)", backgroundColor: "#fff", width: "100%", fontSize: "16px", borderRadius: "0", cursor: "pointer" }}>
                   <option value="default">Default</option>
                   <option value="outline">Outline</option>
-                  <option value="filled">Filled</option>
                 </select>
               </FormField>
 

@@ -1,6 +1,4 @@
 import React from "react";
-import { DocParts } from "../../components/DocParts";
-
 export default function CliDocs() {
   return (
     <>
