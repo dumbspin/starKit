@@ -14,9 +14,10 @@ program
 
 // All available components
 const COMPONENTS = [
-  'Button', 'Input', 'Card', 'Badge', 'Modal', 
-  'Tabs', 'Toast', 'Dropdown', 'GlitchText',
-  'Skeleton', 'FormField', 'Accordion', 'Navbar', 'DataTable'
+  'Button', 'CopyButton', 'ToggleButton', 'Input', 'Card', 'Badge', 'Modal', 
+  'Tabs', 'Toast', 'Dropdown', 'GlitchText', 'Skeleton', 'FormField', 
+  'Accordion', 'Navbar', 'DataTable', 'ParallaxSection', 'ScrollReveal', 
+  'ScrollBlur', 'StickySection'
 ];
 
 program
