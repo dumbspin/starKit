@@ -121,6 +121,27 @@ export function MyPage() {
           filename="tokens.css"
         />
       </section>
+      <section className="doc-section">
+        <h2 className="doc-section__title">Alternative: Use the CLI</h2>
+        <p style={{ marginBottom: 16 }}>
+          Instead of installing the full package, you can use the StarKit CLI to copy 
+          component source code directly into your project.
+        </p>
+        
+        <h3 className="doc-section__subtitle">Initialize all components</h3>
+        <CodeBlock
+          code={`npx starkit-ui init`}
+          lang="bash"
+          filename="terminal"
+        />
+        
+        <h3 className="doc-section__subtitle" style={{ marginTop: 24 }}>Add specific components</h3>
+        <CodeBlock
+          code={`npx starkit-ui add Button`}
+          lang="bash"
+          filename="terminal"
+        />
+      </section>
     </>
   );
 }

@@ -16,12 +16,18 @@ export default function CliDocs() {
         </p>
 
         <section>
-          <h2>Add Component</h2>
+          <h2>Initialization</h2>
+          <p style={{ margin: "16px 0" }}>To install all components and styles in one go:</p>
+          <pre style={{ background: "#f4f4f5", padding: "16px", borderRadius: "8px" }}><code>npx starkit-ui init</code></pre>
+        </section>
+
+        <section>
+          <h2>Add Specific Component</h2>
           <p style={{ margin: "16px 0" }}>Use the following command to run the interactive prompt or pass a component name:</p>
-          <pre style={{ background: "#f4f4f5", padding: "16px", borderRadius: "8px" }}><code>npx starkit add [component-name]</code></pre>
+          <pre style={{ background: "#f4f4f5", padding: "16px", borderRadius: "8px" }}><code>npx starkit-ui add [component-name]</code></pre>
 
           <p style={{ margin: "16px 0" }}>For example, to add the Button component:</p>
-          <pre style={{ background: "#f4f4f5", padding: "16px", borderRadius: "8px" }}><code>npx starkit add Button</code></pre>
+          <pre style={{ background: "#f4f4f5", padding: "16px", borderRadius: "8px" }}><code>npx starkit-ui add Button</code></pre>
         </section>
 
         <section>
