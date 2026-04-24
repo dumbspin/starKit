@@ -1,0 +1,700 @@
+PRODUCT REQUIREMENTS DOCUMENT
+BrutUI
+A Neo-Brutalist UI Component Library
+
+Version
+1.0
+Status
+Draft
+Target Launch
+Q3 2025
+
+
+— Section 01
+Executive Summary
+
+BrutUI is an open-source, neo-brutalist React UI component library targeting portfolio developers and creative frontend engineers. It ships as both an installable npm package and a copy-paste CLI (modelled after shadcn/ui), giving developers full flexibility over how they consume it.
+
+The library fills a clear gap in the current ecosystem: Shadcn/UI owns 'neutral and headless', Aceternity owns 'animated glassmorphism', and no well-documented, well-maintained library owns neo-brutalism. BrutUI claims that space with zero-radius corners, bold 2px borders, hard offset box-shadows, and a loud primary palette built on yellow, red, and blue.
+
+The target audience — portfolio and creative developers — actively seeks a strong visual identity out of the box. They want their projects to look opinionated and distinctive from the first install, without spending weeks designing a custom system from scratch. BrutUI gives them that in one command.
+
+One-line positioning
+"The UI library for developers who are tired of everything looking the same."
+
+
+— Section 02
+Problem Statement
+
+The Gap in the Market
+The current UI library landscape falls into two camps: neutral/headless (Shadcn, Radix) and visually dramatic but niche (Aceternity). Neither serves the creative developer who wants strong personality without the overhead of building a custom design system.
+
+Library
+Aesthetic
+Distribution
+Gap
+Shadcn/UI
+Neutral, invisible
+Copy-paste CLI
+No personality
+Aceternity UI
+Dark glassmorphism
+Copy-paste
+Niche, heavy animations
+DaisyUI
+Colorful, cartoon-ish
+npm (Tailwind)
+No brutalism
+MUI / Chakra
+Corporate, Material
+npm package
+Overengineered, heavy
+BrutUI (ours)
+Neo-brutalist, bold
+npm + CLI both
+This gap is ours
+
+Developer Pain Points
+Starting a creative project means either spending weeks building a custom system or settling for a generic-looking library.
+Neo-brutalism is a growing aesthetic trend in 2024-25 with no dedicated, high-quality open-source library to serve it.
+Most libraries force a choice: npm package (opaque, hard to customise) OR copy-paste (no version management). BrutUI offers both.
+Documentation quality is a consistent pain point — beautiful components let down by poor docs make adoption slow.
+
+
+— Section 03
+Goals & Success Metrics
+
+Primary Goals
+Ship a production-ready v1.0 with 20+ components within 12 weeks.
+Achieve 500+ npm weekly downloads within 60 days of launch.
+Hit 1,000+ GitHub stars within 90 days of launch.
+Get featured on at least one developer newsletter or platform (daily.dev, Hacker News, Product Hunt).
+Maintain a docs site with live component previews, props tables, and dual install instructions for every component.
+
+Success Metrics
+Metric
+Month 1
+Month 3
+Month 6
+npm weekly downloads
+100+
+500+
+2,000+
+GitHub stars
+200+
+1,000+
+3,000+
+Components shipped
+12
+20+
+30+
+Docs site visitors/mo
+500+
+2,000+
+8,000+
+Twitter/X impressions
+5,000+
+25,000+
+100,000+
+
+
+— Section 04
+Target Audience
+
+Primary User: The Creative Developer
+Frontend developers building portfolios, personal projects, side hustles, and creative experiments. They care deeply about visual identity, want to ship fast, and are willing to use an opinionated library if it saves them design time.
+
+They are...
+They want...
+React developers (intermediate+)
+Strong visual identity from day one
+Portfolio / freelance developers
+Copy-paste speed with npm reliability
+Indie hackers building side projects
+Docs that actually explain the props
+Design-aware frontend engineers
+Components that look good in a dark room
+Open source contributors
+A library with a clear aesthetic point of view
+
+Secondary User: The Design-Forward Startup
+Early-stage startups and solo founders who want their product to stand out visually. They're using React, moving fast, and would rather have bold defaults than spend engineering time on custom styles. Neo-brutalism reads as confident and modern to this audience.
+
+Who This Is NOT For
+Enterprise teams building internal tools (they want neutral, accessible, well-tested — use Shadcn or MUI).
+Developers who want maximum flexibility with zero opinions (use Radix UI or Headless UI directly).
+Teams with an existing custom design system who need components to integrate with it.
+
+
+— Section 05
+Design System Specification
+
+The design system is not a style preference — it is the product. Every decision is intentional and enforced. Deviating from these rules produces something that is no longer BrutUI.
+
+The Three Laws of BrutUI
+Law 1: The Hard Shadow
+Every interactive element carries a hard, flat offset box-shadow: 4px 4px 0px #000. On hover, it collapses to 2px 2px 0px #000, creating a press-into-the-page effect. This is non-negotiable. It is the single visual signature of the library.
+
+Law 2: Zero Radius
+border-radius is 0px everywhere. No rounded corners, ever. The rawness of neo-brutalism comes from refusing to soften edges. If a component uses a radius, it is not a BrutUI component.
+
+Law 3: Bold Borders
+Every element that has a border uses a minimum of 2px solid #000. No hairlines. No subtle separators. If there is a border, it is visible from across the room.
+
+Color Tokens
+Token
+Value
+Usage
+Dark Mode
+--brut-yellow
+#FFE600
+Primary accent, CTA buttons
+#FFE600 (unchanged)
+--brut-red
+#FF4444
+Danger, destructive actions
+#FF4444 (unchanged)
+--brut-blue
+#0066FF
+Info, links, secondary accent
+#4488FF
+--brut-green
+#00CC44
+Success states
+#00CC44
+--brut-black
+#000000
+Borders, shadows, text
+#FFFFFF (inverted)
+--brut-white
+#FFFFFF
+Backgrounds, fills
+#111111 (inverted)
+--brut-gray
+#F2F2F2
+Subtle backgrounds
+#1A1A1A
+
+Spacing & Shadow Tokens
+Token
+Value
+--brut-border
+2px solid var(--brut-black)
+--brut-border-thick
+3px solid var(--brut-black)
+--brut-shadow-sm
+2px 2px 0px var(--brut-black)
+--brut-shadow-md
+4px 4px 0px var(--brut-black)
+--brut-shadow-lg
+6px 6px 0px var(--brut-black)
+--brut-shadow-hover
+1px 1px 0px var(--brut-black)
+--brut-radius
+0px
+--brut-font-bold
+700
+--brut-font-black
+900
+
+Typography Rules
+Headings use font-weight 900 (Black). Body uses 400. Interactive labels use 700 (Bold).
+No proprietary font is bundled. The library defaults to system-ui, then falls back to sans-serif. Users pair it with any font — Inter, Space Grotesk, and Syne work especially well.
+Recommended pairing for docs site and marketing: Space Grotesk (headings) + Inter (body).
+Minimum font size: 14px for body, 12px for labels and captions.
+
+Interaction Rules
+Hover state: transform: translate(2px, 2px) + shadow collapses from md to hover. Transition: 80ms ease — fast, snappy, not smooth.
+Active/pressed state: transform: translate(4px, 4px) + shadow: none. The element fully 'sinks' into the page.
+Focus state: 2px solid #0066FF outline, 2px offset. Never remove focus outlines — accessibility is non-negotiable.
+Disabled state: opacity 0.4, cursor: not-allowed, no shadow, no hover effect.
+
+
+— Section 06
+Component Specification
+
+Phase 1 — Core Components (Weeks 1–4)
+The 12 components that form the foundation. Every component must be shipped with: TypeScript props interface, CSS token-based styles, Storybook story, props documentation, and both npm import and copy-paste source.
+
+1. Button
+Variant
+Background
+Shadow
+Use case
+primary
+--brut-yellow
+--brut-shadow-md
+Main CTA
+danger
+--brut-red
+--brut-shadow-md
+Destructive actions
+ghost
+transparent
+--brut-shadow-md
+Secondary actions
+outline
+--brut-white
+--brut-shadow-sm
+Tertiary actions
+
+Props: variant, size (sm | md | lg), disabled, loading, fullWidth, onClick
+Size sm: padding 6px 12px, font 13px. Size md: 8px 16px, 14px. Size lg: 12px 24px, 16px.
+Loading state shows a simple CSS spinner — no external dependency.
+
+2. Card
+Variants: default (white bg + border + shadow-md), flat (border only, no shadow), inset (gray bg, no shadow).
+Props: variant, padding (sm | md | lg), as (div | article | section), onClick (makes it interactive with hover effect).
+Interactive Card gets cursor: pointer and the full hover shadow-collapse interaction.
+
+3. Badge
+Variants: default (yellow), danger (red), success (green), info (blue), outline (transparent + border).
+Props: variant, size (sm | md), dot (boolean — prepends a colored circle indicator).
+
+4. Input
+States: default, focus (blue border), error (red border + red shadow), disabled (opacity 0.4).
+Props: label, placeholder, error (string), hint (string), size, disabled, prefix (ReactNode), suffix (ReactNode).
+Full-width by default. Label sits above, hint and error below.
+
+5. Textarea
+Inherits all Input styling rules. Additional prop: rows (default 4), resize (none | vertical | both).
+
+6. Checkbox
+Custom rendered — no native checkbox. 18px square, 2px border, bold checkmark SVG on check.
+Checked state: black background + white checkmark. Indeterminate state: black background + white dash.
+Props: checked, indeterminate, disabled, label, onChange.
+
+7. Toggle / Switch
+Width 48px, height 24px. Track has 2px border. Thumb is 16px square (not rounded — brutalism rule).
+On state: yellow track. Off state: gray track. Transitions at 100ms ease.
+Props: checked, disabled, label, onChange, size (sm | md).
+
+8. Alert
+Variants: info (blue left border), success (green), warning (yellow), danger (red).
+Left border is 4px thick — the only place a colored border appears. Background is a light tint of the variant color.
+Props: variant, title, description, dismissible, icon (boolean), onDismiss.
+
+9. Avatar
+Shape: square (brutalism rule — no border-radius). Sizes: xs (24px), sm (32px), md (40px), lg (56px), xl (72px).
+Fallback: initials on gray background. Image fallback: initials. Supports src, alt, fallback, size.
+Group variant: overlapping avatars with black border between them.
+
+10. Tooltip
+Trigger: hover or focus. Position: top | bottom | left | right (auto-flips near viewport edge).
+Styled: black background, white text, 2px border. Arrow is a square rotated 45 degrees.
+Props: content, position, delay (ms), children.
+
+11. Select
+Custom dropdown — no native select. Opens a flat panel with 2px border and shadow-md below trigger.
+Options support icons, descriptions, and dividers. Keyboard navigation required (arrow keys, enter, escape).
+Props: options, value, onChange, placeholder, disabled, multiple.
+
+12. Progress Bar
+Height variants: sm (4px), md (8px), lg (16px). Track: gray background, 2px border.
+Fill uses primary yellow by default. Supports animated striped variant.
+Props: value (0–100), max, variant, size, animated, label.
+
+Phase 2 — Advanced Components (Weeks 5–8)
+8 components that cover the most common UI patterns in real applications.
+
+Component
+Key behaviour
+Key props
+Modal / Dialog
+Trap focus, close on Escape, backdrop click closes
+open, onClose, size, title, footer
+Drawer
+Slides in from left/right/bottom. Same focus trap as Modal.
+open, position, onClose, width
+Tabs
+Controlled + uncontrolled. Active tab has yellow underline border 3px.
+items, defaultValue, value, onChange
+Accordion
+Expand/collapse. Multiple or single mode. Animated height.
+items, multiple, defaultOpen
+Toast / Notification
+Stacks in corner. Auto-dismiss with duration. 4 variants.
+message, variant, duration, position
+Dropdown Menu
+Portal-rendered. Supports icons, shortcuts, dividers, submenus.
+trigger, items, align, side
+Data Table
+Sortable columns, row selection, pagination. Striped rows.
+columns, data, sortable, selectable
+Navbar
+Sticky option. Mobile hamburger menu built in. Logo + links + action slot.
+logo, links, sticky, mobileBreakpoint
+
+Phase 3 — Signature Components (Weeks 9–12)
+These are the components that make people share screenshots. They are uniquely BrutUI — you cannot get these from Shadcn or MUI. They exist to drive discovery, word of mouth, and GitHub stars.
+
+Glitch Text
+A text component that applies a CSS glitch animation — chromatic aberration effect with pseudo-element shifting. Configurable intensity and speed. Common in portfolios and hero sections.
+Props: text, intensity (low | medium | high), speed, color, trigger (hover | auto | always).
+
+Scramble Text
+Text that scrambles through random characters before resolving to the real text. Inspired by hacker UIs. Can be triggered on mount, on hover, or programmatically.
+Props: text, duration, charset (alphanumeric | symbols | full), trigger, onComplete.
+
+Marquee
+Smooth horizontal scrolling ticker. Supports any ReactNode as children — not just text. Pause on hover. Bidirectional. Variable speed.
+Props: speed, direction, pauseOnHover, repeat, gap, children.
+
+Noise Overlay
+A Canvas-based grain/noise texture overlay for adding texture to backgrounds without images. Adjustable grain size, opacity, and animation speed. Performance-optimised with requestAnimationFrame.
+Props: opacity, grainSize, animated, blend (multiply | overlay | screen).
+
+Cursor FX
+Replaces the native cursor with a custom follower — a square (brutalism) that trails the mouse with a configurable lag. Changes size on hover over interactive elements. Toggle on/off.
+Props: size, color, lag, hoverScale, enabled.
+
+Drag Card
+A card that can be freely dragged within its container. Snaps back on release (optional). Multiple drag cards create an organic, desk-like layout. Great for portfolio sections.
+Props: defaultPosition, bounds, snapBack, snapBackDuration, onDragEnd, children.
+
+Sticker
+A rotatable, resizable badge/label that feels like a physical sticker. Slightly random initial rotation. Peels on hover. Four shape variants: rectangle, circle, star, arrow.
+Props: label, color, shape, rotation (random by default), size, peelOnHover.
+
+Ticker / Scoreboard
+An animated number ticker. Numbers count up or down from a start value to an end value with configurable easing. Perfect for stats sections. Direction-aware — flips animation for up vs down.
+Props: from, to, duration, easing, format (currency | percent | number), prefix, suffix.
+
+
+— Section 07
+Technical Architecture
+
+Monorepo Structure
+The project uses Turborepo to manage a monorepo with three packages and two apps. This structure supports both distribution methods and keeps docs co-located with the source.
+
+Path
+Purpose
+packages/core
+The npm package — all components, tokens, types
+packages/cli
+The CLI tool (npx brutui add button)
+apps/docs
+Next.js documentation and marketing site
+apps/storybook
+Component development playground
+
+Build Toolchain
+Tool
+Version
+Purpose
+Turborepo
+latest
+Monorepo task runner with caching
+tsup
+^8.0
+Bundles packages/core → ESM + CJS + .d.ts
+TypeScript
+^5.0
+All source code. Strict mode enabled.
+React
+^18.0 (peer)
+Peer dependency — not bundled
+Storybook
+^8.0
+Component playground and docs generation
+Vitest
+^1.0
+Unit tests for component logic and tokens
+Playwright
+^1.0
+Visual regression tests for components
+Commander.js
+^12.0
+CLI argument parsing for packages/cli
+Changesets
+^2.0
+Versioning and changelog automation
+
+packages/core — npm Package
+Output formats: ESM (.mjs) and CJS (.cjs). Types: .d.ts files co-located with output.
+CSS: exported as a separate brutui.css file. Users import it once at the app root: import 'brutui/styles'.
+Tree-shakeable: each component is a named export. Unused components are dropped by bundler.
+Peer dependencies: react ^17 | ^18, react-dom ^17 | ^18. Nothing else.
+Bundle size target: < 10kb gzipped for the full library (CSS tokens drive styles, not JS).
+
+packages/cli — Copy-Paste Tool
+Command: npx brutui add [component]. Downloads the component source files directly into the user's project.
+Interactive prompt if no component name given: shows a checklist of all available components.
+Respects project structure: detects if user has src/ directory and places files accordingly.
+Config file: brutui.json at project root stores user preferences (output directory, TypeScript preference, CSS framework).
+
+CLI Example Interaction
+$ npx brutui add button
+
+✓ Detected React + TypeScript project
+✓ Output directory: src/components/ui/
+✓ Copied: Button.tsx
+✓ Copied: button.css
+
+Import with: import { Button } from './components/ui/Button'
+
+TypeScript Conventions
+All props interfaces are exported and named: ButtonProps, CardProps, etc.
+Variant types use string literal unions: type ButtonVariant = 'primary' | 'danger' | 'ghost' | 'outline'
+Every component accepts className and style as escape hatches.
+forwardRef used on all interactive elements (Button, Input, Select, Textarea) for ref forwarding.
+
+Accessibility Requirements
+All interactive components meet WCAG 2.1 AA minimum. This is non-negotiable and part of every component's acceptance criteria.
+Focus management: focus trapping in Modal and Drawer, focus restoration on close.
+ARIA: all components use correct roles, aria-labels, aria-expanded, aria-controls as appropriate.
+Keyboard navigation: all interactive components are fully keyboard operable. Tab, Enter, Space, Escape, arrow keys as per ARIA patterns.
+Color contrast: all default color combinations meet 4.5:1 contrast ratio. Yellow (#FFE600) on black (#000) = 19.6:1.
+
+
+— Section 08
+Distribution Model
+
+BrutUI offers both distribution methods simultaneously. The package is designed so both methods produce identical output — users get the exact same component regardless of how they install it.
+
+Method 1: npm Package
+Installation
+Install command
+npm install brutui
+
+Usage
+Usage
+import { Button, Card, Badge } from 'brutui';
+import 'brutui/styles';
+
+export default function App() {
+  return <Button variant="primary">Click me</Button>;
+}
+
+Best for: developers who want to get started in under 60 seconds and don't need to customise internals.
+Updates: standard npm update workflow. Follows semver strictly.
+Bundle impact: tree-shaking removes unused components. Only imported components appear in final bundle.
+
+Method 2: CLI Copy-Paste
+Installation
+CLI command
+npx brutui add button
+npx brutui add card badge input  # multiple at once
+npx brutui add --all             # install everything
+
+Best for: developers who want full source ownership and the ability to customise every detail.
+Each component is copied as a standalone .tsx + .css file into the project.
+No ongoing dependency — the user owns the code after installation.
+The CLI checks for updates and notifies users when a newer version of a component is available.
+
+Versioning Strategy
+Semantic versioning (semver) strictly followed: major.minor.patch.
+Breaking changes (new Law violation, token renames, prop removals) = major version bump.
+New components, new variants, new props = minor version bump.
+Bug fixes, style tweaks = patch version bump.
+Changesets used for automated changelog generation and npm publish workflow.
+
+
+— Section 09
+Documentation Site Requirements
+
+The docs site is not secondary — it is 50% of the product. Poor docs kill adoption regardless of how good the components are. The docs site must itself be built entirely with BrutUI components.
+
+Site Structure
+Page
+Content
+/ (Landing)
+Hero with live component demos, install command, positioning statement, feature highlights
+/docs/introduction
+What BrutUI is, who it's for, philosophy, quick start guide
+/docs/installation
+Both methods step by step. Framework-specific guides (Next.js, Vite, CRA).
+/docs/theming
+How to override tokens, dark mode setup, custom color palettes
+/docs/[component]
+One page per component — preview, variants, props table, code
+/examples
+Full page examples: landing page, pricing page, portfolio, dashboard
+/changelog
+Auto-generated from Changesets. Every version documented.
+
+Component Page Requirements
+Every component documentation page must contain all of the following, in this order:
+Live interactive preview — actually rendered component, not a screenshot. User can interact with it.
+Variant showcase — every variant shown side by side.
+Install tabs — 'npm' tab shows import statement. 'Manual' tab shows CLI command then full component source.
+Props table — auto-generated from TypeScript types. Columns: prop name, type, default, required, description.
+Usage examples — 2–3 realistic code examples showing the component in context.
+Accessibility notes — any relevant keyboard behaviour, ARIA attributes, or screen reader considerations.
+
+Landing Page Requirements
+Hero section: headline, subheadline, install command in a code block, two CTA buttons (Get Started, GitHub).
+Component showcase: animated ticker of component names, or a live grid of 6–8 components rendered in the page.
+The Three Laws: explained visually with live interactive demos for each law.
+Comparison: a simple table showing BrutUI vs Shadcn vs Aceternity — honest, not marketing.
+Social proof block: GitHub stars count (live via API), npm downloads, and a Twitter wall of posts using the library.
+Footer: links to GitHub, npm, Twitter, changelog. Built with BrutUI badge.
+
+Tech Stack for Docs Site
+Framework: Next.js 14 with App Router.
+Syntax highlighting: Shiki for code blocks. Theme: a custom BrutUI theme with yellow accent.
+Search: Algolia DocSearch (free for open source) or Flexsearch for local search.
+Analytics: Plausible (privacy-first, no cookie banner needed).
+Deployment: Vercel. Automatic preview deployments on PRs.
+
+
+— Section 10
+Development Roadmap
+
+Week 1–2: Foundation
+Set up Turborepo monorepo with packages/core and apps/storybook.
+Configure tsup for dual ESM/CJS output with TypeScript declarations.
+Define and document all CSS tokens in tokens.css.
+Build and publish Button, Card, Badge to npm as v0.0.1.
+Set up automated npm publish via GitHub Actions on tag push.
+Outcome: working publish pipeline. Something real on npm within 2 weeks.
+
+Week 3–5: Core Components
+Ship all 12 Phase 1 components with full Storybook stories.
+Write Vitest unit tests for all component logic (variants, disabled states, callbacks).
+Begin Next.js docs site — introduction, installation, and first 6 component pages.
+Publish v0.1.0. Announce on Twitter with a thread showing all 12 components.
+
+Week 6: CLI Tool
+Build packages/cli with Commander.js.
+Implement add command, project detection, file copying.
+Test on fresh CRA, Vite, and Next.js projects.
+Publish @brutui/cli to npm. Update docs with CLI instructions.
+
+Week 7–9: Advanced + Viral Components
+Ship all 8 Phase 2 components. Priority order: Modal, Toast, Tabs, Accordion, Dropdown, Table, Drawer, Navbar.
+Build 3 Phase 3 signature components: Glitch Text, Scramble Text, Marquee.
+Post Glitch Text and Scramble Text demos on Twitter. These are the viral components.
+Complete all component docs pages. Publish v0.3.0.
+
+Week 10–11: Remaining Signature Components + Examples
+Ship Noise Overlay, Cursor FX, Drag Card, Sticker, Ticker.
+Build 3 full example pages in docs: portfolio landing, SaaS pricing, creative agency.
+Add dark mode support with [data-theme='dark'] token overrides.
+Visual regression tests with Playwright for all components in both themes.
+
+Week 12: Launch
+Polish docs site landing page. Live component demos in hero.
+Write 'How I built a UI library from scratch' blog post — technical and honest.
+Publish v1.0.0. Tag in GitHub. Generate full changelog.
+Submit to Product Hunt. Post on Hacker News (Show HN). Submit to daily.dev.
+DM 5–10 prominent frontend developers/content creators with a personalised note.
+
+
+— Section 11
+Open Questions & Future Considerations
+
+Open Questions
+Question
+Options
+Decision by
+Tailwind CSS support?
+CSS vars only (current plan) vs optional Tailwind plugin
+Week 2
+Framer Motion dependency?
+Pure CSS animations vs Framer for advanced components
+Week 3
+Vue / Svelte support?
+React only v1, then multi-framework in v2
+Post v1.0
+Paid pro components?
+Stay fully free vs pro tier for advanced components
+Month 3
+Design Figma kit?
+Community Figma file to match components
+Month 2
+
+v2 Roadmap Considerations
+Multi-framework support: Vue 3 and Svelte versions using the same CSS token system.
+Figma component kit: a community Figma file that mirrors every component for designers.
+Theme builder: a web UI where users create and export custom BrutUI themes as a tokens.css file.
+BrutUI templates: full Next.js starter templates pre-built with BrutUI (portfolio, SaaS, blog).
+Component request system: GitHub discussions template for community component requests.
+
+
+— Section 12
+Appendix
+
+A. Competitive Landscape
+Criteria
+BrutUI
+Shadcn/UI
+Aceternity
+DaisyUI
+Aesthetic
+Neo-brutalist
+Neutral
+Glassmorphism
+Colorful/cartoon
+Distribution
+npm + CLI both
+CLI only
+CLI only
+npm (Tailwind)
+Framework
+React
+React
+React
+Any + Tailwind
+Dark mode
+Yes
+Yes
+Default dark
+Yes
+Signature comps
+Yes (Phase 3)
+No
+Yes (animations)
+No
+Bundle size
+<10kb
+0 (copy-paste)
+Variable
+Depends
+TypeScript
+Full
+Full
+Full
+Partial
+
+B. Naming Options
+Final name TBD. Shortlist evaluated on: memorability, npm availability, domain availability, and aesthetic fit.
+
+Name
+npm available
+Memorability
+Aesthetic fit
+BrutUI
+Check required
+High
+High
+SlabUI
+Check required
+High
+High
+RawUI
+Check required
+Medium
+High
+BrickUI
+Check required
+High
+Medium
+StarkUI
+Check required
+Medium
+Medium
+
+C. Acceptance Criteria for Each Component
+A component is not 'done' until all of the following are true:
+Renders correctly in Chrome, Firefox, Safari, and Edge.
+All variants shown and working in Storybook.
+TypeScript types exported and documented.
+WCAG 2.1 AA compliant (contrast, focus, keyboard navigation).
+Unit tests pass in Vitest. Coverage > 80% for logic branches.
+Visual regression snapshot saved in Playwright.
+Component page live on docs site with preview, variants, props table, and install instructions.
+CLI add command copies correct files without errors.
+
+
+BrutUI PRD v1.0  ·  Confidential  ·  Built different.

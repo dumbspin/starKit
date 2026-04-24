@@ -1,0 +1,34 @@
+.brut-parallax {
+  position: relative;
+  overflow: hidden;
+  /* Maintains the brutalist theme */
+  border-top: var(--brut-border-thick);
+  border-bottom: var(--brut-border-thick);
+  background-color: var(--brut-gray);
+  z-index: 1;
+}
+
+.brut-parallax__bg {
+  position: absolute;
+  top: -50%;
+  left: 0;
+  width: 100%;
+  height: 200%; /* Extra height to allow scrolling without revealing edges */
+  z-index: -1;
+  pointer-events: none;
+  will-change: transform;
+}
+
+.brut-parallax__content {
+  position: relative;
+  z-index: 2;
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+  .brut-parallax__bg {
+    top: 0;
+    height: 100%;
+    transform: none !important;
+  }
+}

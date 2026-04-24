@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>StarKit — Input Preview</title>
+  <style>
+    /* ── TOKENS ────────────────────────────────────────────── */
+    :root {
+      --brut-yellow: #FFE600;
+      --brut-red: #FF4444;
+      --brut-blue: #0066FF;
+      --brut-green: #00CC44;
+      --brut-black: #000000;
+      --brut-white: #FFFFFF;
+      --brut-gray: #F2F2F2;
+      --brut-border: 2px solid var(--brut-black);
+      --brut-border-thick: 3px solid var(--brut-black);
+      --brut-shadow-sm: 2px 2px 0px var(--brut-black);
+      --brut-shadow-md: 4px 4px 0px var(--brut-black);
+      --brut-shadow-hover: 1px 1px 0px var(--brut-black);
+      --brut-shadow-none: 0 0 0 transparent;
+      --brut-radius: 0px;
+      --brut-font-family: system-ui, -apple-system, sans-serif;
+      --brut-font-weight-bold: 700;
+      --brut-font-size-xs: 12px;
+      --brut-font-size-sm: 13px;
+      --brut-font-size-md: 14px;
+      --brut-font-size-lg: 16px;
+      --brut-space-1: 4px;
+      --brut-space-2: 8px;
+      --brut-space-3: 12px;
+      --brut-space-4: 16px;
+      --brut-transition-fast: 80ms ease;
+      --brut-focus-outline: 2px solid var(--brut-blue);
+      --brut-focus-offset: 2px;
+      --brut-disabled-opacity: 0.4;
+    }
+
+    [data-theme='dark'] {
+      --brut-blue: #4488FF;
+      --brut-black: #FFFFFF;
+      --brut-white: #111111;
+      --brut-gray: #1A1A1A;
+    }
+
+    /* ── PAGE ──────────────────────────────────────────────── */
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: var(--brut-font-family);
+      background: var(--brut-white);
+      color: var(--brut-black);
+      padding: 48px;
+    }
+    h1 { font-weight: 900; font-size: 36px; margin-bottom: 40px; }
+    h2 { font-weight: 900; font-size: 18px; margin-bottom: 16px; text-transform: uppercase; margin-top: 40px; }
+    .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 32px; }
+
+    /* ── INPUT STYLES ──────────────────────────────────────── */
+    .brut-input-wrapper { display: flex; flex-direction: column; gap: var(--brut-space-1); width: 100%; }
+    .brut-input-label { font-size: var(--brut-font-size-sm); font-weight: var(--brut-font-weight-bold); }
+    .brut-input-container {
+      display: flex; align-items: center; background-color: var(--brut-white);
+      border: var(--brut-border); border-radius: var(--brut-radius);
+      transition: transform var(--brut-transition-fast), box-shadow var(--brut-transition-fast);
+    }
+    .brut-input-container:focus-within {
+      outline: var(--brut-focus-outline); outline-offset: var(--brut-focus-offset);
+      box-shadow: var(--brut-shadow-sm); transform: translate(2px, 2px);
+    }
+    .brut-input-field {
+      flex: 1; width: 100%; height: 100%; background: transparent; border: none;
+      font-family: inherit; font-size: var(--brut-font-size-md); padding: 0 var(--brut-space-3); outline: none;
+    }
+    .brut-input-container--sm { height: 32px; }
+    .brut-input-container--md { height: 40px; }
+    .brut-input-container--lg { height: 48px; }
+    
+    .brut-input-container--error { border-color: var(--brut-red); }
+    .brut-input-container--error:focus-within { box-shadow: 2px 2px 0px var(--brut-red); outline-color: var(--brut-red); }
+    
+    .brut-input-prefix, .brut-input-suffix {
+      display: flex; align-items: center; padding: 0 var(--brut-space-2); border-color: inherit;
+    }
+    .brut-input-prefix { border-right: var(--brut-border); }
+    .brut-input-suffix { border-left: var(--brut-border); }
+    
+    .brut-input-hint, .brut-input-error { font-size: var(--brut-font-size-xs); margin-top: 2px; }
+    .brut-input-hint { opacity: 0.6; }
+    .brut-input-error { color: var(--brut-red); font-weight: 700; }
+    
+    .brut-input-wrapper--disabled { opacity: var(--brut-disabled-opacity); pointer-events: none; }
+  </style>
+</head>
+<body>
+  <h1>⚡ StarKit Input</h1>
+
+  <div class="grid">
+    <!-- BASIC -->
+    <section>
+      <h2>Basic</h2>
+      <div class="brut-input-wrapper">
+        <label class="brut-input-label">Email Address</label>
+        <div class="brut-input-container brut-input-container--md">
+          <input type="text" class="brut-input-field" placeholder="you@example.com">
+        </div>
+      </div>
+    </section>
+
+    <!-- SIZES -->
+    <section>
+      <h2>Sizes</h2>
+      <div style="display: flex; flex-direction: column; gap: 16px;">
+        <div class="brut-input-container brut-input-container--sm">
+          <input type="text" class="brut-input-field" placeholder="Small Size">
+        </div>
+        <div class="brut-input-container brut-input-container--md">
+          <input type="text" class="brut-input-field" placeholder="Medium Size">
+        </div>
+        <div class="brut-input-container brut-input-container--lg">
+          <input type="text" class="brut-input-field" placeholder="Large Size">
+        </div>
+      </div>
+    </section>
+
+    <!-- PREFIX / SUFFIX -->
+    <section>
+      <h2>Prefix & Suffix</h2>
+      <div style="display: flex; flex-direction: column; gap: 16px;">
+        <div class="brut-input-container brut-input-container--md">
+          <div class="brut-input-prefix">https://</div>
+          <input type="text" class="brut-input-field" placeholder="starkit.ui">
+        </div>
+        <div class="brut-input-container brut-input-container--md">
+          <input type="text" class="brut-input-field" placeholder="Search">
+          <div class="brut-input-suffix">⌘K</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- STATES -->
+    <section>
+      <h2>States</h2>
+      <div style="display: flex; flex-direction: column; gap: 16px;">
+        <div class="brut-input-wrapper">
+          <label class="brut-input-label">With Hint</label>
+          <div class="brut-input-container brut-input-container--md">
+            <input type="password" class="brut-input-field" value="secret">
+          </div>
+          <p class="brut-input-hint">Must be at least 8 characters.</p>
+        </div>
+        
+        <div class="brut-input-wrapper">
+          <label class="brut-input-label">Error State</label>
+          <div class="brut-input-container brut-input-container--md brut-input-container--error">
+            <input type="text" class="brut-input-field" value="invalid-value">
+          </div>
+          <p class="brut-input-error">This field is required.</p>
+        </div>
+
+        <div class="brut-input-wrapper brut-input-wrapper--disabled">
+          <label class="brut-input-label">Disabled</label>
+          <div class="brut-input-container brut-input-container--md">
+            <input type="text" class="brut-input-field" value="Can't touch this" disabled>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+</body>
+</html>

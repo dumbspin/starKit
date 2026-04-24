@@ -1,0 +1,89 @@
+/* ============================================================
+   StarKit — Skeleton Styles
+   Loading placeholders with pulse animation
+   ============================================================ */
+
+.brut-skeleton {
+  display: block;
+  background: var(--brut-gray);
+  border: var(--brut-border);
+  border-radius: var(--brut-radius);
+  position: relative;
+  overflow: hidden;
+}
+
+/* ── Shimmer animation ───────────────────────────────────────── */
+
+.brut-skeleton::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(255, 255, 255, 0.4) 50%,
+    transparent 100%
+  );
+  animation: brut-skeleton-shimmer 1.5s infinite;
+}
+
+@keyframes brut-skeleton-shimmer {
+  0%   { transform: translateX(-100%); }
+  100% { transform: translateX(100%); }
+}
+
+/* ── Variants ────────────────────────────────────────────────── */
+
+.brut-skeleton--text {
+  height: 16px;
+  width: 100%;
+}
+
+.brut-skeleton--heading {
+  height: 28px;
+  width: 60%;
+}
+
+.brut-skeleton--avatar {
+  width: 48px;
+  height: 48px;
+}
+
+.brut-skeleton--avatar-sm {
+  width: 32px;
+  height: 32px;
+}
+
+.brut-skeleton--avatar-lg {
+  width: 64px;
+  height: 64px;
+}
+
+.brut-skeleton--card {
+  height: 160px;
+  width: 100%;
+}
+
+.brut-skeleton--button {
+  height: 40px;
+  width: 120px;
+}
+
+.brut-skeleton--image {
+  height: 200px;
+  width: 100%;
+}
+
+/* ── No border variant ───────────────────────────────────────── */
+
+.brut-skeleton--borderless {
+  border: none;
+}
+
+/* ── Respect reduced motion ──────────────────────────────────── */
+
+@media (prefers-reduced-motion: reduce) {
+  .brut-skeleton::after {
+    animation: none;
+  }
+}

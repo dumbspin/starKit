@@ -1,0 +1,70 @@
+/* ============================================================
+   StarKit — FormField Styles
+   Consistent wrapper for label + input + hint + error
+   ============================================================ */
+
+.brut-formfield {
+  display: flex;
+  flex-direction: column;
+  gap: var(--brut-space-1);
+  font-family: var(--brut-font-family);
+}
+
+/* ── Label ───────────────────────────────────────────────────── */
+
+.brut-formfield__label {
+  font-size: var(--brut-font-size-md);
+  font-weight: var(--brut-font-weight-black);
+  color: var(--brut-black);
+  line-height: 1.3;
+}
+
+.brut-formfield__label--required::after {
+  content: ' *';
+  color: var(--brut-red);
+}
+
+/* ── Hint ────────────────────────────────────────────────────── */
+
+.brut-formfield__hint {
+  font-size: var(--brut-font-size-sm);
+  color: var(--brut-black);
+  opacity: 0.55;
+  line-height: 1.3;
+}
+
+/* ── Error ───────────────────────────────────────────────────── */
+
+.brut-formfield__error {
+  font-size: var(--brut-font-size-sm);
+  font-weight: var(--brut-font-weight-bold);
+  color: var(--brut-red);
+  line-height: 1.3;
+}
+
+/* ── Sizes ───────────────────────────────────────────────────── */
+
+.brut-formfield--sm .brut-formfield__label {
+  font-size: var(--brut-font-size-sm);
+}
+
+.brut-formfield--lg .brut-formfield__label {
+  font-size: var(--brut-font-size-lg);
+}
+
+.brut-formfield--lg {
+  gap: var(--brut-space-2);
+}
+
+/* ── Full width ──────────────────────────────────────────────── */
+
+.brut-formfield--full {
+  width: 100%;
+}
+
+/* ── Disabled ────────────────────────────────────────────────── */
+
+.brut-formfield--disabled {
+  opacity: var(--brut-disabled-opacity);
+  pointer-events: none;
+}

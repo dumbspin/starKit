@@ -1,0 +1,103 @@
+/* ============================================================
+   StarKit Design Tokens
+   Neo-Brutalist Design System
+   ============================================================
+   THE THREE LAWS:
+   1. Hard Shadow — every interactive element carries a hard offset shadow
+   2. Zero Radius — border-radius is 0px everywhere, no exceptions
+   3. Bold Borders — minimum 2px solid #000 on all bordered elements
+   ============================================================ */
+
+:root {
+  /* ── Color Tokens ─────────────────────────────────────────── */
+  --brut-yellow: #FFE600;
+  --brut-red: #FF4444;
+  --brut-blue: #0066FF;
+  --brut-green: #00CC44;
+  --brut-black: #000000;
+  --brut-white: #FFFFFF;
+  --brut-gray: #F2F2F2;
+
+  /* ── Border Tokens ────────────────────────────────────────── */
+  --brut-border: 2px solid var(--brut-black);
+  --brut-border-thick: 3px solid var(--brut-black);
+
+  /* ── Shadow Tokens ────────────────────────────────────────── */
+  --brut-shadow-sm: 2px 2px 0px var(--brut-black);
+  --brut-shadow-md: 4px 4px 0px var(--brut-black);
+  --brut-shadow-lg: 6px 6px 0px var(--brut-black);
+  --brut-shadow-hover: 1px 1px 0px var(--brut-black);
+  --brut-shadow-none: 0 0 0 transparent;
+
+  /* ── Radius Token ─────────────────────────────────────────── */
+  --brut-radius: 0px;
+
+  /* ── Typography Tokens ────────────────────────────────────── */
+  --brut-font-family: system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+  --brut-font-weight-normal: 400;
+  --brut-font-weight-bold: 700;
+  --brut-font-weight-black: 900;
+  --brut-font-size-xs: 12px;
+  --brut-font-size-sm: 13px;
+  --brut-font-size-md: 14px;
+  --brut-font-size-lg: 16px;
+  --brut-font-size-xl: 18px;
+  --brut-font-size-2xl: 24px;
+  --brut-font-size-3xl: 32px;
+  --brut-font-size-4xl: 48px;
+
+  /* ── Spacing Tokens ───────────────────────────────────────── */
+  --brut-space-1: 4px;
+  --brut-space-2: 8px;
+  --brut-space-3: 12px;
+  --brut-space-4: 16px;
+  --brut-space-5: 20px;
+  --brut-space-6: 24px;
+  --brut-space-8: 32px;
+  --brut-space-10: 40px;
+  --brut-space-12: 48px;
+
+  /* ── Transition Tokens ────────────────────────────────────── */
+  --brut-transition-fast: 80ms ease;
+  --brut-transition-normal: 150ms ease;
+
+  /* ── Focus Token ──────────────────────────────────────────── */
+  --brut-focus-outline: 2px solid var(--brut-blue);
+  --brut-focus-offset: 2px;
+
+  /* ── Disabled Token ───────────────────────────────────────── */
+  --brut-disabled-opacity: 0.4;
+}
+
+/* ── Dark Mode ──────────────────────────────────────────────── */
+/* Apply this by adding data-theme="dark" to your HTML or body tag */
+[data-theme='dark'] {
+  --brut-blue: #4488FF;
+  --brut-black: #FFFFFF;
+  --brut-white: #111111;
+  --brut-gray: #1A1A1A;
+}
+
+/* ── Custom Theme Example ───────────────────────────────────── */
+/* You can define your own themes by targeting data-theme="custom" 
+   or overriding :root tokens in your own CSS.
+   
+[data-theme='cyberpunk'] {
+  --brut-yellow: #fcee0a;
+  --brut-red: #ff003c;
+  --brut-blue: #00f0ff;
+  --brut-green: #00ff00;
+  --brut-black: #000000;
+  --brut-white: #fcee0a;
+  --brut-gray: #202020;
+}
+*/
+
+/* ── Base Reset (scoped to StarKit) ─────────────────────────── */
+.starkit *,
+.starkit *::before,
+.starkit *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}

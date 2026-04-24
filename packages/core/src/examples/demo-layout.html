@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>StarKit — Layout Demo</title>
+  <style>
+    /* ── STARKIT TOKENS & UTILITIES ────────────────────────────── */
+    :root {
+      --brut-yellow: #FFE600;
+      --brut-red: #FF4444;
+      --brut-blue: #0066FF;
+      --brut-green: #00CC44;
+      --brut-black: #000000;
+      --brut-white: #FFFFFF;
+      --brut-gray: #F2F2F2;
+      --brut-border: 2px solid var(--brut-black);
+      --brut-border-thick: 3px solid var(--brut-black);
+      --brut-shadow-sm: 2px 2px 0px var(--brut-black);
+      --brut-shadow-md: 4px 4px 0px var(--brut-black);
+      --brut-shadow-hover: 1px 1px 0px var(--brut-black);
+      --brut-shadow-none: 0 0 0 transparent;
+      --brut-radius: 0px;
+      --brut-font-family: system-ui, -apple-system, sans-serif;
+      --brut-font-weight-bold: 700;
+      --brut-font-size-xs: 12px;
+      --brut-font-size-sm: 13px;
+      --brut-font-size-md: 14px;
+      --brut-font-size-lg: 16px;
+      --brut-space-3: 12px;
+      --brut-space-5: 20px;
+      --brut-transition-fast: 80ms ease;
+    }
+
+    [data-theme='dark'] {
+      --brut-blue: #4488FF;
+      --brut-black: #FFFFFF;
+      --brut-white: #111111;
+      --brut-gray: #1A1A1A;
+    }
+
+    .brut-structural {
+      border: var(--brut-border);
+      border-radius: var(--brut-radius);
+      color: var(--brut-black);
+    }
+    .brut-shadow-sm { box-shadow: var(--brut-shadow-sm); }
+    .brut-shadow-md { box-shadow: var(--brut-shadow-md); }
+    
+    .brut-interactive { transition: transform var(--brut-transition-fast), box-shadow var(--brut-transition-fast), background-color var(--brut-transition-fast); }
+    .brut-interactive:hover { transform: translate(2px, 2px); box-shadow: var(--brut-shadow-hover); }
+    .brut-interactive:active { transform: translate(4px, 4px); box-shadow: var(--brut-shadow-none); }
+
+    /* ── COMPONENT STYLES ────────────────────────────────────── */
+    /* Button */
+    .brut-btn {
+      appearance: none; background: none; cursor: pointer;
+      display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+      font-family: var(--brut-font-family); font-weight: var(--brut-font-weight-bold);
+      line-height: 1; text-decoration: none; white-space: nowrap; user-select: none;
+    }
+    .brut-btn--md { padding: 8px 16px; font-size: var(--brut-font-size-md); }
+    .brut-btn--sm { padding: 6px 12px; font-size: var(--brut-font-size-sm); }
+    .brut-btn--primary { background-color: var(--brut-yellow); }
+    .brut-btn--ghost { background-color: transparent; }
+
+    /* Card */
+    .brut-card { display: block; font-family: var(--brut-font-family); background-color: var(--brut-white); }
+    .brut-card--p-md { padding: var(--brut-space-5); }
+    .brut-card--p-sm { padding: var(--brut-space-3); }
+    .brut-card--interactive { cursor: pointer; user-select: none; }
+    .brut-card--inset { background-color: var(--brut-gray); box-shadow: none; }
+
+    /* Badge */
+    .brut-badge {
+      display: inline-flex; align-items: center; justify-content: center; gap: 6px;
+      font-family: var(--brut-font-family); font-weight: var(--brut-font-weight-bold);
+      line-height: 1; text-transform: uppercase; white-space: nowrap;
+    }
+    .brut-badge--sm { padding: 4px 8px; font-size: var(--brut-font-size-xs); }
+    .brut-badge--default { background-color: var(--brut-yellow); color: var(--brut-black); }
+    .brut-badge--success { background-color: var(--brut-green); color: var(--brut-black); }
+    .brut-badge--danger { background-color: var(--brut-red); color: var(--brut-white); }
+    .brut-badge--info { background-color: var(--brut-blue); color: var(--brut-white); }
+
+    .brut-badge__dot { width: 6px; height: 6px; background-color: currentColor; border-radius: 50%; }
+
+    /* ── PAGE LAYOUT ─────────────────────────────────────────── */
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: var(--brut-font-family);
+      background: var(--brut-white);
+      color: var(--brut-black);
+      padding: 60px 40px;
+      display: flex;
+      justify-content: center;
+    }
+    .container {
+      max-width: 800px; width: 100%;
+      display: grid; grid-template-columns: 1fr 1fr; gap: 32px;
+    }
+    .header { grid-column: 1 / -1; margin-bottom: 24px; }
+    .header h1 { font-weight: 900; font-size: 32px; }
+    .header p { opacity: 0.7; margin-top: 8px; }
+
+    .demo-content { display: flex; flex-direction: column; gap: 16px; }
+    .card-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 12px; }
+    .card-title { font-weight: 900; font-size: 20px; }
+    .card-desc { opacity: 0.8; font-size: 14px; margin-bottom: 20px; line-height: 1.5; }
+    .card-footer { display: flex; justify-content: flex-end; gap: 12px; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="header">
+      <h1>Dashboard Component Demo</h1>
+      <p>Validating visual consistency across Card, Badge, and Button components.</p>
+    </div>
+
+    <!-- Active Task Card -->
+    <article class="brut-card brut-structural brut-card--p-md brut-shadow-md brut-interactive brut-card--interactive" tabindex="0">
+      <div class="card-header">
+        <h2 class="card-title">Database Migration</h2>
+        <span class="brut-badge brut-structural brut-badge--sm brut-badge--success">
+          <span class="brut-badge__dot"></span> Active
+        </span>
+      </div>
+      <p class="card-desc">The migration of user data to the v2 cluster is currently in progress. Estimated completion in 12 minutes.</p>
+      <div class="card-footer">
+        <button class="brut-btn brut-structural brut-interactive brut-shadow-md brut-btn--md brut-btn--ghost">Details</button>
+        <button class="brut-btn brut-structural brut-interactive brut-shadow-md brut-btn--md brut-btn--primary">Manage</button>
+      </div>
+    </article>
+
+    <!-- Error Alert Card -->
+    <article class="brut-card brut-structural brut-card--p-md brut-shadow-md">
+      <div class="card-header">
+        <h2 class="card-title">Payment Failed</h2>
+        <span class="brut-badge brut-structural brut-badge--sm brut-badge--danger">Action req</span>
+      </div>
+      <p class="card-desc">The last subscription invoice could not be processed due to an expired card. Please update your billing details.</p>
+      
+      <!-- Inset section -->
+      <div class="brut-card brut-structural brut-card--p-sm brut-card--inset" style="margin-bottom: 20px;">
+        <span style="font-size: 13px; font-weight: 700;">Invoice #4029-A</span>
+        <span style="float: right; font-size: 13px;">$49.00</span>
+      </div>
+
+      <div class="card-footer" style="justify-content: flex-start;">
+        <button class="brut-btn brut-structural brut-interactive brut-shadow-md brut-btn--md brut-btn--primary">Update Billing</button>
+      </div>
+    </article>
+
+  </div>
+</body>
+</html>

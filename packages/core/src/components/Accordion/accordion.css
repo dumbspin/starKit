@@ -1,0 +1,143 @@
+/* ============================================================
+   StarKit — Accordion Styles
+   Expand/collapse panels with smooth height animation
+   ============================================================ */
+
+.brut-accordion {
+  display: flex;
+  flex-direction: column;
+  font-family: var(--brut-font-family);
+}
+
+/* ── Item ────────────────────────────────────────────────────── */
+
+.brut-accordion__item {
+  border: var(--brut-border);
+  border-radius: var(--brut-radius);
+  background: var(--brut-white);
+}
+
+.brut-accordion__item + .brut-accordion__item {
+  border-top: none;
+}
+
+/* ── Trigger ─────────────────────────────────────────────────── */
+
+.brut-accordion__trigger {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  padding: var(--brut-space-4) var(--brut-space-5);
+  background: transparent;
+  border: none;
+  border-radius: var(--brut-radius);
+  font-family: var(--brut-font-family);
+  font-size: var(--brut-font-size-md);
+  font-weight: var(--brut-font-weight-bold);
+  color: var(--brut-black);
+  cursor: pointer;
+  text-align: left;
+  transition: background-color var(--brut-transition-fast);
+}
+
+.brut-accordion__trigger:hover {
+  background: var(--brut-yellow);
+}
+
+.brut-accordion__trigger:focus-visible {
+  outline: var(--brut-focus-outline);
+  outline-offset: calc(var(--brut-focus-offset) * -1);
+}
+
+/* ── Chevron icon ────────────────────────────────────────────── */
+
+.brut-accordion__chevron {
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+  flex-shrink: 0;
+  transition: transform var(--brut-transition-normal);
+  font-size: 14px;
+  line-height: 1;
+}
+
+.brut-accordion__item--open > .brut-accordion__trigger > .brut-accordion__chevron {
+  transform: rotate(180deg);
+}
+
+/* ── Content panel (animated) ────────────────────────────────── */
+
+.brut-accordion__panel {
+  overflow: hidden;
+  transition: height var(--brut-transition-normal), opacity var(--brut-transition-normal);
+}
+
+.brut-accordion__panel--closed {
+  height: 0;
+  opacity: 0;
+}
+
+.brut-accordion__panel--open {
+  opacity: 1;
+}
+
+.brut-accordion__content {
+  padding: 0 var(--brut-space-5) var(--brut-space-4);
+  font-size: var(--brut-font-size-md);
+  line-height: 1.6;
+  border-top: 1px solid var(--brut-black);
+}
+
+/* ── Sizes ───────────────────────────────────────────────────── */
+
+.brut-accordion--sm .brut-accordion__trigger {
+  padding: var(--brut-space-2) var(--brut-space-3);
+  font-size: var(--brut-font-size-sm);
+}
+
+.brut-accordion--sm .brut-accordion__content {
+  padding: 0 var(--brut-space-3) var(--brut-space-3);
+  font-size: var(--brut-font-size-sm);
+}
+
+.brut-accordion--lg .brut-accordion__trigger {
+  padding: var(--brut-space-5) var(--brut-space-6);
+  font-size: var(--brut-font-size-lg);
+}
+
+.brut-accordion--lg .brut-accordion__content {
+  padding: 0 var(--brut-space-6) var(--brut-space-5);
+  font-size: var(--brut-font-size-lg);
+}
+
+/* ── Shadow on outer container ───────────────────────────────── */
+
+.brut-accordion--bordered {
+  border: var(--brut-border);
+  box-shadow: var(--brut-shadow-md);
+}
+
+.brut-accordion--bordered .brut-accordion__item {
+  border-left: none;
+  border-right: none;
+}
+
+.brut-accordion--bordered .brut-accordion__item:first-child {
+  border-top: none;
+}
+
+.brut-accordion--bordered .brut-accordion__item:last-child {
+  border-bottom: none;
+}
+
+/* ── Disabled item ───────────────────────────────────────────── */
+
+.brut-accordion__item--disabled .brut-accordion__trigger {
+  opacity: var(--brut-disabled-opacity);
+  cursor: not-allowed;
+}
+
+.brut-accordion__item--disabled .brut-accordion__trigger:hover {
+  background: transparent;
+}

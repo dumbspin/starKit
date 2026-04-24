@@ -1,0 +1,186 @@
+/* ============================================================
+   StarKit — Navbar Styles
+   Responsive navigation bar with mobile hamburger
+   ============================================================ */
+
+.brut-navbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--brut-space-3) var(--brut-space-5);
+  background: var(--brut-white);
+  border-bottom: var(--brut-border);
+  font-family: var(--brut-font-family);
+  position: relative;
+  z-index: 100;
+}
+
+/* ── Sticky ──────────────────────────────────────────────────── */
+
+.brut-navbar--sticky {
+  position: sticky;
+  top: 0;
+}
+
+/* ── Shadow variant ──────────────────────────────────────────── */
+
+.brut-navbar--shadow {
+  box-shadow: var(--brut-shadow-md);
+}
+
+/* ── Brand / Logo ────────────────────────────────────────────── */
+
+.brut-navbar__brand {
+  display: flex;
+  align-items: center;
+  gap: var(--brut-space-2);
+  font-size: var(--brut-font-size-xl);
+  font-weight: var(--brut-font-weight-black);
+  color: var(--brut-black);
+  text-decoration: none;
+  flex-shrink: 0;
+}
+
+.brut-navbar__brand:hover {
+  color: var(--brut-black);
+}
+
+/* ── Links container ─────────────────────────────────────────── */
+
+.brut-navbar__links {
+  display: flex;
+  align-items: center;
+  gap: var(--brut-space-1);
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.brut-navbar__link {
+  padding: var(--brut-space-2) var(--brut-space-3);
+  font-size: var(--brut-font-size-md);
+  font-weight: var(--brut-font-weight-bold);
+  color: var(--brut-black);
+  text-decoration: none;
+  border: 2px solid transparent;
+  border-radius: var(--brut-radius);
+  transition:
+    background-color var(--brut-transition-fast),
+    border-color var(--brut-transition-fast);
+  cursor: pointer;
+  background: none;
+  font-family: var(--brut-font-family);
+}
+
+.brut-navbar__link:hover {
+  background: var(--brut-yellow);
+  border-color: var(--brut-black);
+}
+
+.brut-navbar__link--active {
+  background: var(--brut-yellow);
+  border-color: var(--brut-black);
+  box-shadow: var(--brut-shadow-sm);
+}
+
+/* ── Actions slot ────────────────────────────────────────────── */
+
+.brut-navbar__actions {
+  display: flex;
+  align-items: center;
+  gap: var(--brut-space-2);
+  flex-shrink: 0;
+}
+
+/* ── Hamburger ───────────────────────────────────────────────── */
+
+.brut-navbar__hamburger {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  gap: 4px;
+  width: 36px;
+  height: 36px;
+  padding: 6px;
+  background: transparent;
+  border: var(--brut-border);
+  border-radius: var(--brut-radius);
+  cursor: pointer;
+  transition: background-color var(--brut-transition-fast);
+}
+
+.brut-navbar__hamburger:hover {
+  background: var(--brut-yellow);
+}
+
+.brut-navbar__hamburger:focus-visible {
+  outline: var(--brut-focus-outline);
+  outline-offset: var(--brut-focus-offset);
+}
+
+.brut-navbar__hamburger-line {
+  display: block;
+  width: 100%;
+  height: 2px;
+  background: var(--brut-black);
+  transition: transform var(--brut-transition-normal), opacity var(--brut-transition-normal);
+}
+
+/* Hamburger → X transform when open */
+.brut-navbar__hamburger--open .brut-navbar__hamburger-line:nth-child(1) {
+  transform: translateY(6px) rotate(45deg);
+}
+
+.brut-navbar__hamburger--open .brut-navbar__hamburger-line:nth-child(2) {
+  opacity: 0;
+}
+
+.brut-navbar__hamburger--open .brut-navbar__hamburger-line:nth-child(3) {
+  transform: translateY(-6px) rotate(-45deg);
+}
+
+/* ── Mobile overlay ──────────────────────────────────────────── */
+
+.brut-navbar__mobile {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  background: var(--brut-white);
+  border: var(--brut-border);
+  border-top: none;
+  box-shadow: var(--brut-shadow-lg);
+  padding: var(--brut-space-3);
+  flex-direction: column;
+  gap: var(--brut-space-1);
+  z-index: 99;
+}
+
+.brut-navbar__mobile--open {
+  display: flex;
+}
+
+.brut-navbar__mobile .brut-navbar__link {
+  width: 100%;
+  padding: var(--brut-space-3);
+}
+
+.brut-navbar__mobile .brut-navbar__actions {
+  margin-top: var(--brut-space-2);
+  padding-top: var(--brut-space-3);
+  border-top: var(--brut-border);
+}
+
+/* ── Responsive ──────────────────────────────────────────────── */
+
+@media (max-width: 768px) {
+  .brut-navbar__links,
+  .brut-navbar__actions--desktop {
+    display: none;
+  }
+
+  .brut-navbar__hamburger {
+    display: flex;
+  }
+}

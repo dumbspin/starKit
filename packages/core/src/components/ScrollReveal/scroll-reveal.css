@@ -1,0 +1,42 @@
+.brut-reveal {
+  opacity: 0;
+  will-change: transform, opacity;
+  transition-property: opacity, transform;
+  transition-duration: 600ms;
+  transition-timing-function: cubic-bezier(0.16, 1, 0.3, 1); /* Snappy brut spring-like */
+}
+
+/* Animations */
+.brut-reveal--fade {
+  transform: none;
+}
+
+.brut-reveal--slide-up {
+  transform: translateY(40px);
+}
+
+.brut-reveal--slide-in-left {
+  transform: translateX(-40px);
+}
+
+.brut-reveal--slide-in-right {
+  transform: translateX(40px);
+}
+
+.brut-reveal--scale {
+  transform: scale(0.9);
+}
+
+/* Visible State */
+.brut-reveal--visible {
+  opacity: 1;
+  transform: translateY(0) translateX(0) scale(1);
+}
+
+/* Reduced motion overrides */
+@media (prefers-reduced-motion: reduce) {
+  .brut-reveal {
+    transition: opacity 300ms ease;
+    transform: none !important;
+  }
+}

@@ -1,0 +1,101 @@
+/* ============================================================
+   StarKit — Tabs Styles
+   Requires: shared.css
+   ============================================================ */
+
+/* ── Container ───────────────────────────────────────────────── */
+
+.brut-tabs {
+  font-family: var(--brut-font-family);
+}
+
+/* ── Tab List ────────────────────────────────────────────────── */
+
+.brut-tabs__list {
+  display: flex;
+  border-bottom: var(--brut-border-thick);
+  gap: 0;
+  overflow-x: auto;
+}
+
+/* ── Individual Tab ──────────────────────────────────────────── */
+
+.brut-tabs__tab {
+  appearance: none;
+  background: var(--brut-gray);
+  border: var(--brut-border);
+  border-bottom: none;
+  padding: 10px 20px;
+  font-family: var(--brut-font-family);
+  font-size: var(--brut-font-size-md);
+  font-weight: var(--brut-font-weight-bold);
+  cursor: pointer;
+  color: var(--brut-black);
+  position: relative;
+  top: 2px;
+  transition:
+    background-color var(--brut-transition-fast),
+    box-shadow var(--brut-transition-fast);
+  white-space: nowrap;
+  user-select: none;
+  border-radius: var(--brut-radius);
+}
+
+/* Adjacent tabs share a border */
+.brut-tabs__tab + .brut-tabs__tab {
+  border-left: none;
+}
+
+.brut-tabs__tab:hover:not(:disabled):not(.brut-tabs__tab--active) {
+  background: var(--brut-white);
+}
+
+.brut-tabs__tab:focus-visible {
+  outline: var(--brut-focus-outline);
+  outline-offset: var(--brut-focus-offset);
+  z-index: 1;
+}
+
+/* ── Active Tab ──────────────────────────────────────────────── */
+
+.brut-tabs__tab--active {
+  background: var(--brut-white);
+  border-bottom: 2px solid var(--brut-white);
+  font-weight: var(--brut-font-weight-black);
+  box-shadow: var(--brut-shadow-sm);
+}
+
+/* ── Disabled Tab ────────────────────────────────────────────── */
+
+.brut-tabs__tab:disabled {
+  opacity: var(--brut-disabled-opacity);
+  cursor: not-allowed;
+}
+
+/* ── Sizes ───────────────────────────────────────────────────── */
+
+.brut-tabs--sm .brut-tabs__tab {
+  padding: 6px 14px;
+  font-size: var(--brut-font-size-sm);
+}
+
+.brut-tabs--lg .brut-tabs__tab {
+  padding: 14px 28px;
+  font-size: var(--brut-font-size-lg);
+}
+
+/* ── Panel ───────────────────────────────────────────────────── */
+
+.brut-tabs__panel {
+  padding: var(--brut-space-5);
+  border: var(--brut-border);
+  border-top: none;
+  background: var(--brut-white);
+  font-size: var(--brut-font-size-md);
+  line-height: 1.6;
+}
+
+.brut-tabs__panel:focus-visible {
+  outline: var(--brut-focus-outline);
+  outline-offset: calc(-1 * var(--brut-focus-offset));
+}

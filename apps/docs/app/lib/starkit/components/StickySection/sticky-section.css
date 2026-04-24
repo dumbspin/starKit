@@ -1,0 +1,19 @@
+.brut-sticky-track {
+  position: relative;
+  /* Ensure brutalist border isn't double-rendered, but provide containment */
+  width: 100%;
+}
+
+.brut-sticky-container {
+  position: sticky;
+  top: 0;
+  height: 100vh; /* Viewport height container */
+  width: 100%;
+  overflow: hidden;
+  /* Brutalist defaults */
+  background-color: var(--brut-white);
+  border-top: var(--brut-border-thick);
+  border-bottom: var(--brut-border-thick);
+  box-shadow: 0 4px 0 var(--brut-black);
+  z-index: 10;
+}

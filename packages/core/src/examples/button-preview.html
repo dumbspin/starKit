@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>StarKit — Button Preview</title>
+  <style>
+    /* ── TOKENS ────────────────────────────────────────────── */
+    :root {
+      --brut-yellow: #FFE600;
+      --brut-red: #FF4444;
+      --brut-blue: #0066FF;
+      --brut-green: #00CC44;
+      --brut-black: #000000;
+      --brut-white: #FFFFFF;
+      --brut-gray: #F2F2F2;
+      --brut-border: 2px solid var(--brut-black);
+      --brut-border-thick: 3px solid var(--brut-black);
+      --brut-shadow-sm: 2px 2px 0px var(--brut-black);
+      --brut-shadow-md: 4px 4px 0px var(--brut-black);
+      --brut-shadow-lg: 6px 6px 0px var(--brut-black);
+      --brut-shadow-hover: 1px 1px 0px var(--brut-black);
+      --brut-shadow-none: 0 0 0 transparent;
+      --brut-radius: 0px;
+      --brut-font-family: system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+      --brut-font-weight-bold: 700;
+      --brut-font-weight-black: 900;
+      --brut-font-size-sm: 13px;
+      --brut-font-size-md: 14px;
+      --brut-font-size-lg: 16px;
+      --brut-transition-fast: 80ms ease;
+      --brut-focus-outline: 2px solid var(--brut-blue);
+      --brut-focus-offset: 2px;
+      --brut-disabled-opacity: 0.4;
+    }
+
+    [data-theme='dark'] {
+      --brut-blue: #4488FF;
+      --brut-black: #FFFFFF;
+      --brut-white: #111111;
+      --brut-gray: #1A1A1A;
+    }
+
+    /* ── PAGE ──────────────────────────────────────────────── */
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: var(--brut-font-family);
+      background: var(--brut-white);
+      color: var(--brut-black);
+      padding: 48px;
+      transition: background 200ms, color 200ms;
+    }
+
+    h1 {
+      font-weight: 900;
+      font-size: 36px;
+      margin-bottom: 8px;
+      letter-spacing: -1px;
+    }
+
+    .subtitle {
+      font-size: 16px;
+      font-weight: 400;
+      margin-bottom: 40px;
+      opacity: 0.7;
+    }
+
+    h2 {
+      font-weight: 900;
+      font-size: 18px;
+      margin-bottom: 16px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    section {
+      margin-bottom: 40px;
+    }
+
+    .row {
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+      align-items: center;
+    }
+
+    .theme-toggle {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      z-index: 100;
+    }
+
+    .divider {
+      border: none;
+      border-top: var(--brut-border);
+      margin: 40px 0;
+    }
+
+    /* ── BUTTON STYLES ─────────────────────────────────────── */
+    .brut-btn {
+      appearance: none;
+      border: var(--brut-border);
+      border-radius: var(--brut-radius);
+      background: none;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      font-family: var(--brut-font-family);
+      font-weight: var(--brut-font-weight-bold);
+      line-height: 1;
+      text-decoration: none;
+      white-space: nowrap;
+      box-shadow: var(--brut-shadow-md);
+      transition: transform var(--brut-transition-fast), box-shadow var(--brut-transition-fast), background-color var(--brut-transition-fast);
+      outline: none;
+      user-select: none;
+    }
+
+    .brut-btn--sm { padding: 6px 12px; font-size: var(--brut-font-size-sm); }
+    .brut-btn--md { padding: 8px 16px; font-size: var(--brut-font-size-md); }
+    .brut-btn--lg { padding: 12px 24px; font-size: var(--brut-font-size-lg); }
+
+    .brut-btn--primary { background-color: var(--brut-yellow); color: var(--brut-black); }
+    .brut-btn--danger  { background-color: var(--brut-red); color: var(--brut-white); }
+    .brut-btn--ghost   { background-color: transparent; color: var(--brut-black); }
+    .brut-btn--outline { background-color: var(--brut-white); color: var(--brut-black); box-shadow: var(--brut-shadow-sm); }
+
+    .brut-btn:hover:not(:disabled) { transform: translate(2px, 2px); box-shadow: var(--brut-shadow-hover); }
+    .brut-btn--outline:hover:not(:disabled) { box-shadow: var(--brut-shadow-hover); }
+    .brut-btn:active:not(:disabled) { transform: translate(4px, 4px); box-shadow: var(--brut-shadow-none); }
+    .brut-btn:focus-visible { outline: var(--brut-focus-outline); outline-offset: var(--brut-focus-offset); }
+    .brut-btn:disabled { opacity: var(--brut-disabled-opacity); cursor: not-allowed; box-shadow: var(--brut-shadow-none); transform: none; }
+
+    .brut-btn--full { width: 100%; }
+
+    .brut-btn--loading { position: relative; pointer-events: none; }
+    .brut-btn--loading .brut-btn__label { visibility: hidden; }
+
+    .brut-btn__spinner {
+      position: absolute;
+      width: 16px; height: 16px;
+      border: 2px solid var(--brut-black);
+      border-right-color: transparent;
+      border-radius: 0px;
+      animation: brut-spin 600ms linear infinite;
+    }
+
+    .brut-btn--danger .brut-btn__spinner { border-color: var(--brut-white); border-right-color: transparent; }
+
+    @keyframes brut-spin { to { transform: rotate(360deg); } }
+  </style>
+</head>
+<body>
+  <div class="theme-toggle">
+    <button class="brut-btn brut-btn--md brut-btn--ghost" onclick="toggleTheme()" id="themeBtn">🌙 Dark</button>
+  </div>
+
+  <h1>⚡ StarKit Button</h1>
+  <p class="subtitle">Neo-brutalist. No radius. Bold borders. Hard shadows.</p>
+
+  <hr class="divider" />
+
+  <!-- VARIANTS -->
+  <section>
+    <h2>Variants</h2>
+    <div class="row">
+      <button class="brut-btn brut-btn--md brut-btn--primary">Primary</button>
+      <button class="brut-btn brut-btn--md brut-btn--danger">Danger</button>
+      <button class="brut-btn brut-btn--md brut-btn--ghost">Ghost</button>
+      <button class="brut-btn brut-btn--md brut-btn--outline">Outline</button>
+    </div>
+  </section>
+
+  <!-- SIZES -->
+  <section>
+    <h2>Sizes</h2>
+    <div class="row">
+      <button class="brut-btn brut-btn--sm brut-btn--primary">Small</button>
+      <button class="brut-btn brut-btn--md brut-btn--primary">Medium</button>
+      <button class="brut-btn brut-btn--lg brut-btn--primary">Large</button>
+    </div>
+  </section>
+
+  <!-- STATES -->
+  <section>
+    <h2>States</h2>
+    <div class="row">
+      <button class="brut-btn brut-btn--md brut-btn--primary" disabled>Disabled</button>
+      <button class="brut-btn brut-btn--md brut-btn--danger" disabled>Disabled Danger</button>
+      <button class="brut-btn brut-btn--md brut-btn--primary brut-btn--loading" onclick="demoLoading(this)">
+        <span class="brut-btn__spinner"></span>
+        <span class="brut-btn__label">Loading…</span>
+      </button>
+      <button class="brut-btn brut-btn--md brut-btn--primary" onclick="demoLoading(this)">Click to Load</button>
+    </div>
+  </section>
+
+  <!-- FULL WIDTH -->
+  <section style="max-width: 420px;">
+    <h2>Full Width</h2>
+    <button class="brut-btn brut-btn--lg brut-btn--primary brut-btn--full">Full Width CTA</button>
+  </section>
+
+  <!-- VARIANT × SIZE MATRIX -->
+  <section>
+    <h2>Variant × Size Matrix</h2>
+    <div style="display: grid; grid-template-columns: repeat(4, auto); gap: 12px; justify-content: start;">
+      <button class="brut-btn brut-btn--sm brut-btn--primary">primary sm</button>
+      <button class="brut-btn brut-btn--sm brut-btn--danger">danger sm</button>
+      <button class="brut-btn brut-btn--sm brut-btn--ghost">ghost sm</button>
+      <button class="brut-btn brut-btn--sm brut-btn--outline">outline sm</button>
+
+      <button class="brut-btn brut-btn--md brut-btn--primary">primary md</button>
+      <button class="brut-btn brut-btn--md brut-btn--danger">danger md</button>
+      <button class="brut-btn brut-btn--md brut-btn--ghost">ghost md</button>
+      <button class="brut-btn brut-btn--md brut-btn--outline">outline md</button>
+
+      <button class="brut-btn brut-btn--lg brut-btn--primary">primary lg</button>
+      <button class="brut-btn brut-btn--lg brut-btn--danger">danger lg</button>
+      <button class="brut-btn brut-btn--lg brut-btn--ghost">ghost lg</button>
+      <button class="brut-btn brut-btn--lg brut-btn--outline">outline lg</button>
+    </div>
+  </section>
+
+  <hr class="divider" />
+
+  <p style="font-size: 13px; opacity: 0.5;">
+    Hover → translate(2px) + shadow collapse &nbsp;|&nbsp; Active → translate(4px) + no shadow &nbsp;|&nbsp; Tab to test focus ring
+  </p>
+
+  <script>
+    function toggleTheme() {
+      const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+      document.documentElement.setAttribute('data-theme', isDark ? '' : 'dark');
+      document.getElementById('themeBtn').textContent = isDark ? '🌙 Dark' : '☀️ Light';
+    }
+
+    function demoLoading(btn) {
+      btn.classList.add('brut-btn--loading');
+      const label = btn.querySelector('.brut-btn__label') || btn;
+      const origText = label.textContent;
+
+      if (!btn.querySelector('.brut-btn__spinner')) {
+        const spinner = document.createElement('span');
+        spinner.className = 'brut-btn__spinner';
+        btn.insertBefore(spinner, btn.firstChild);
+      }
+
+      if (btn.querySelector('.brut-btn__label')) {
+        btn.querySelector('.brut-btn__label').style.visibility = 'hidden';
+      }
+
+      setTimeout(() => {
+        btn.classList.remove('brut-btn--loading');
+        const sp = btn.querySelector('.brut-btn__spinner');
+        if (sp) sp.remove();
+        if (btn.querySelector('.brut-btn__label')) {
+          btn.querySelector('.brut-btn__label').style.visibility = 'visible';
+        }
+      }, 2000);
+    }
+  </script>
+</body>
+</html>

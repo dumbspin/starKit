@@ -1,0 +1,50 @@
+/* ============================================================
+   StarKit — Card Styles
+   Requires: shared.css
+   ============================================================ */
+
+/* ── Base ────────────────────────────────────────────────────── */
+
+.brut-card {
+  display: block;
+  font-family: var(--brut-font-family);
+  background-color: var(--brut-white);
+}
+
+/* ── Padding ─────────────────────────────────────────────────── */
+
+.brut-card--p-none { padding: 0; }
+.brut-card--p-sm   { padding: var(--brut-space-3); }
+.brut-card--p-md   { padding: var(--brut-space-5); }
+.brut-card--p-lg   { padding: var(--brut-space-8); }
+
+/* ── Variants ────────────────────────────────────────────────── */
+
+/* default: white bg + border + shadow-md (handled by shared classes) */
+
+/* flat: white bg + border + no shadow */
+.brut-card--flat {
+  background-color: var(--brut-white);
+  box-shadow: var(--brut-shadow-none);
+}
+
+/* inset: gray bg + border + no shadow */
+.brut-card--inset {
+  background-color: var(--brut-gray);
+  box-shadow: var(--brut-shadow-none);
+}
+
+/* ── Interactive ─────────────────────────────────────────────── */
+
+.brut-card--interactive {
+  cursor: pointer;
+  user-select: none;
+}
+
+.brut-card--disabled {
+  opacity: var(--brut-disabled-opacity);
+  cursor: not-allowed;
+  pointer-events: none;
+  box-shadow: var(--brut-shadow-none) !important;
+  transform: none !important;
+}

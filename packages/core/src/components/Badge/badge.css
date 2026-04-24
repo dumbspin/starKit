@@ -1,0 +1,78 @@
+/* ============================================================
+   StarKit — Badge Styles
+   Requires: shared.css
+   ============================================================ */
+
+/* ── Base ────────────────────────────────────────────────────── */
+
+.brut-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--brut-space-1);
+  font-family: var(--brut-font-family);
+  font-weight: var(--brut-font-weight-bold);
+  line-height: 1;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+/* ── Sizes ───────────────────────────────────────────────────── */
+
+.brut-badge--sm {
+  padding: 4px 8px;
+  font-size: var(--brut-font-size-xs);
+}
+
+.brut-badge--md {
+  padding: 6px 12px;
+  font-size: var(--brut-font-size-sm);
+}
+
+/* ── Variants ────────────────────────────────────────────────── */
+
+/* default: Yellow */
+.brut-badge--default {
+  background-color: var(--brut-yellow);
+  color: var(--brut-black);
+}
+
+/* danger: Red */
+.brut-badge--danger {
+  background-color: var(--brut-red);
+  color: var(--brut-white);
+}
+
+/* success: Green */
+.brut-badge--success {
+  background-color: var(--brut-green);
+  color: var(--brut-black); /* Better contrast on green */
+}
+
+/* info: Blue */
+.brut-badge--info {
+  background-color: var(--brut-blue);
+  color: var(--brut-white);
+}
+
+/* outline: Transparent */
+.brut-badge--outline {
+  background-color: transparent;
+  color: var(--brut-black);
+}
+
+/* ── Dot Indicator ───────────────────────────────────────────── */
+
+.brut-badge__dot {
+  width: 6px;
+  height: 6px;
+  background-color: currentColor;
+  border-radius: 50%; /* Dots are the only exception to zero radius in standard UIs, though if we want pure brutalism it could be a square. PRD says 'circle indicator' so we'll do 50% */
+}
+
+/* ── States ──────────────────────────────────────────────────── */
+
+.brut-badge--disabled {
+  opacity: var(--brut-disabled-opacity);
+  cursor: not-allowed;
+}

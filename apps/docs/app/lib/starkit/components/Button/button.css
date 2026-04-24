@@ -1,0 +1,205 @@
+/* ============================================================
+   StarKit — Button Styles
+   Requires: shared.css
+   ============================================================ */
+
+/* ── Base ────────────────────────────────────────────────────── */
+
+.brut-btn {
+  /* Reset */
+  appearance: none;
+  background: none;
+  cursor: pointer;
+
+  /* Layout */
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--brut-space-2);
+
+  /* Typography */
+  font-family: var(--brut-font-family);
+  font-weight: var(--brut-font-weight-bold);
+  line-height: 1;
+  text-decoration: none;
+  white-space: nowrap;
+
+  /* Prevent text selection on rapid clicks */
+  user-select: none;
+}
+
+/* ── Sizes ───────────────────────────────────────────────────── */
+
+.brut-btn--sm {
+  padding: 6px 12px;
+  font-size: var(--brut-font-size-sm);
+}
+
+.brut-btn--md {
+  padding: 8px 16px;
+  font-size: var(--brut-font-size-md);
+}
+
+.brut-btn--lg {
+  padding: 12px 24px;
+  font-size: var(--brut-font-size-lg);
+}
+
+/* ── Variants ────────────────────────────────────────────────── */
+
+/* Primary — yellow background, black text */
+.brut-btn--primary {
+  background-color: var(--brut-yellow);
+}
+
+/* Danger — red background, white text */
+.brut-btn--danger {
+  background-color: var(--brut-red);
+  color: var(--brut-white);
+}
+
+/* Ghost — transparent background, black text */
+.brut-btn--ghost {
+  background-color: transparent;
+}
+
+/* Outline — white background, black text */
+.brut-btn--outline {
+  background-color: var(--brut-white);
+}
+
+/* Hover fixes: outline shadow should stay small even on hover */
+.brut-btn--outline:hover:not(:disabled) {
+  box-shadow: var(--brut-shadow-hover);
+}
+
+/* ── Full Width ──────────────────────────────────────────────── */
+
+.brut-btn--full {
+  width: 100%;
+}
+
+/* ── Loading State ───────────────────────────────────────────── */
+
+.brut-btn--loading {
+  position: relative;
+  color: transparent !important;
+}
+
+.brut-btn--loading .brut-btn__label {
+  visibility: hidden;
+}
+
+.brut-btn--loading .brut-btn__spinner {
+  visibility: visible;
+}
+
+/* Spinner — pure CSS, no external dependency */
+.brut-btn__spinner {
+  position: absolute;
+  width: 16px;
+  height: 16px;
+  border: 2px solid currentColor;
+  border-right-color: transparent;
+  animation: brut-spin 600ms linear infinite;
+  border-radius: 0;
+}
+
+.brut-btn--primary .brut-btn__spinner,
+.brut-btn--ghost .brut-btn__spinner,
+.brut-btn--outline .brut-btn__spinner {
+  border-color: var(--brut-black);
+  border-right-color: transparent;
+}
+
+.brut-btn--danger .brut-btn__spinner {
+  border-color: var(--brut-white);
+  border-right-color: transparent;
+}
+
+@keyframes brut-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* ── Icon Slots ──────────────────────────────────────────────── */
+
+.brut-btn__icon {
+  display: inline-flex;
+  align-items: center;
+  flex-shrink: 0;
+}
+
+.brut-btn__icon--prefix {
+  margin-right: var(--brut-space-1);
+}
+
+.brut-btn__icon--suffix {
+  margin-left: var(--brut-space-1);
+}
+
+/* ── Effects ─────────────────────────────────────────────────── */
+
+/* Slide Effect */
+.brut-btn--effect-slide .brut-btn__label-wrapper {
+  position: relative;
+  display: inline-block;
+  overflow: hidden;
+  /* Make sure wrapper doesn't collapse */
+  vertical-align: top;
+}
+
+.brut-btn--effect-slide .brut-btn__label {
+  display: inline-block;
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.brut-btn--effect-slide .brut-btn__label-wrapper::after {
+  content: attr(data-text);
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.brut-btn--effect-slide:hover:not(:disabled) .brut-btn__label {
+  transform: translateY(-100%);
+}
+
+.brut-btn--effect-slide:hover:not(:disabled) .brut-btn__label-wrapper::after {
+  transform: translateY(-100%);
+}
+
+/* Pulse Effect */
+@keyframes brut-btn-pulse {
+  0% { box-shadow: 0 0 0 0 rgba(0, 0, 0, 0.6); }
+  70% { box-shadow: 0 0 0 8px rgba(0, 0, 0, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(0, 0, 0, 0); }
+}
+
+.brut-btn--effect-pulse:not(:disabled) {
+  animation: brut-btn-pulse 2s infinite;
+}
+
+.brut-btn--effect-pulse:hover:not(:disabled) {
+  animation: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .brut-btn--effect-slide .brut-btn__label,
+  .brut-btn--effect-slide .brut-btn__label-wrapper::after {
+    transition: none;
+  }
+  .brut-btn--effect-slide:hover:not(:disabled) .brut-btn__label {
+    transform: none;
+  }
+  .brut-btn--effect-pulse:not(:disabled) {
+    animation: none;
+  }
+}

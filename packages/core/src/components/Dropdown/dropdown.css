@@ -1,0 +1,159 @@
+/* ============================================================
+   StarKit — Dropdown Styles
+   Requires: shared.css
+   ============================================================ */
+
+/* ── Container ───────────────────────────────────────────────── */
+
+.brut-dropdown {
+  position: relative;
+  display: inline-block;
+  font-family: var(--brut-font-family);
+}
+
+/* ── Trigger ─────────────────────────────────────────────────── */
+
+.brut-dropdown__trigger {
+  appearance: none;
+  display: inline-flex;
+  align-items: center;
+  gap: var(--brut-space-2);
+  padding: 8px 16px;
+  font-family: var(--brut-font-family);
+  font-size: var(--brut-font-size-md);
+  font-weight: var(--brut-font-weight-bold);
+  cursor: pointer;
+  background: var(--brut-white);
+  color: var(--brut-black);
+  white-space: nowrap;
+  user-select: none;
+  line-height: 1;
+}
+
+.brut-dropdown__trigger:disabled {
+  opacity: var(--brut-disabled-opacity);
+  cursor: not-allowed;
+}
+
+/* ── Arrow ───────────────────────────────────────────────────── */
+
+.brut-dropdown__arrow {
+  display: inline-block;
+  font-size: 10px;
+  transition: transform var(--brut-transition-fast);
+}
+
+.brut-dropdown--open .brut-dropdown__arrow {
+  transform: rotate(180deg);
+}
+
+/* ── Sizes ───────────────────────────────────────────────────── */
+
+.brut-dropdown--sm .brut-dropdown__trigger {
+  padding: 6px 12px;
+  font-size: var(--brut-font-size-sm);
+}
+
+.brut-dropdown--lg .brut-dropdown__trigger {
+  padding: 12px 24px;
+  font-size: var(--brut-font-size-lg);
+}
+
+/* ── Menu ────────────────────────────────────────────────────── */
+
+.brut-dropdown__menu {
+  position: absolute;
+  top: calc(100% + 4px);
+  left: 0;
+  z-index: 900;
+  min-width: 180px;
+  width: max-content;
+  max-height: 280px;
+  overflow-y: auto;
+  background: var(--brut-white);
+  padding: var(--brut-space-1) 0;
+  animation: brut-dropdown-in 100ms ease;
+}
+
+.brut-dropdown__menu--right {
+  left: auto;
+  right: 0;
+}
+
+@keyframes brut-dropdown-in {
+  from {
+    opacity: 0;
+    transform: translateY(-4px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ── Menu Item ───────────────────────────────────────────────── */
+
+.brut-dropdown__item {
+  appearance: none;
+  display: flex;
+  align-items: center;
+  gap: var(--brut-space-2);
+  width: 100%;
+  padding: 8px 16px;
+  font-family: var(--brut-font-family);
+  font-size: var(--brut-font-size-md);
+  font-weight: var(--brut-font-weight-normal);
+  color: var(--brut-black);
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  text-align: left;
+  white-space: nowrap;
+  border-radius: var(--brut-radius);
+  transition: background-color var(--brut-transition-fast);
+}
+
+.brut-dropdown__item:hover,
+.brut-dropdown__item--focused {
+  background: var(--brut-yellow);
+  font-weight: var(--brut-font-weight-bold);
+}
+
+.brut-dropdown__item:active {
+  background: var(--brut-gray);
+}
+
+.brut-dropdown__item:disabled {
+  opacity: var(--brut-disabled-opacity);
+  cursor: not-allowed;
+  background: transparent;
+  font-weight: var(--brut-font-weight-normal);
+}
+
+.brut-dropdown__item--danger {
+  color: var(--brut-red);
+}
+
+.brut-dropdown__item--danger:hover,
+.brut-dropdown__item--danger.brut-dropdown__item--focused {
+  background: var(--brut-red);
+  color: var(--brut-white);
+}
+
+/* ── Divider ─────────────────────────────────────────────────── */
+
+.brut-dropdown__divider {
+  height: 0;
+  margin: var(--brut-space-1) 0;
+  border-top: var(--brut-border);
+}
+
+/* ── Item Icon ───────────────────────────────────────────────── */
+
+.brut-dropdown__item-icon {
+  display: inline-flex;
+  font-size: 14px;
+  width: 18px;
+  justify-content: center;
+  flex-shrink: 0;
+}

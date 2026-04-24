@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>StarKit — New Components Test</title>
+  <link rel="stylesheet" href="../../dist/index.css" />
+  <style>
+    body {
+      font-family: system-ui, -apple-system, sans-serif;
+      background: #f5f5f5;
+      padding: 40px;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+    h1 { font-size: 32px; font-weight: 900; margin-bottom: 8px; }
+    h2 { font-size: 22px; font-weight: 900; margin: 40px 0 16px; border-bottom: 3px solid #000; padding-bottom: 8px; }
+    h3 { font-size: 16px; font-weight: 700; margin: 24px 0 12px; }
+    .test-row { display: flex; gap: 12px; flex-wrap: wrap; align-items: center; margin-bottom: 16px; }
+    .subtitle { color: #666; margin-bottom: 32px; }
+  </style>
+</head>
+<body>
+  <h1>⚡ New Components Test</h1>
+  <p class="subtitle">Modal · Tabs · Toast · Dropdown</p>
+  <div id="app">Loading components...</div>
+
+  <script type="importmap">
+    {
+      "imports": {
+        "react": "https://esm.sh/react@18",
+        "react-dom": "https://esm.sh/react-dom@18",
+        "react-dom/client": "https://esm.sh/react-dom@18/client",
+        "react/jsx-runtime": "https://esm.sh/react@18/jsx-runtime"
+      }
+    }
+  </script>
+
+  <script type="module">
+    import React from 'react';
+    import { createRoot } from 'react-dom/client';
+    import {
+      Button, Card, Badge, Input,
+      Modal, Tabs, Dropdown, ToastProvider, useToast
+    } from '../../dist/index.mjs';
+
+    const e = React.createElement;
+
+    /* ── Toast Demo ──────────────────────────────────────────── */
+    function ToastDemo() {
+      const { toast } = useToast();
+
+      return e('div', { className: 'test-row' },
+        e(Button, {
+          variant: 'primary', size: 'sm',
+          onClick: () => toast({ message: 'Operation completed.', variant: 'success', title: 'Success' })
+        }, 'Success Toast'),
+        e(Button, {
+          variant: 'danger', size: 'sm',
+          onClick: () => toast({ message: 'Something went wrong!', variant: 'danger', title: 'Error' })
+        }, 'Danger Toast'),
+        e(Button, {
+          variant: 'outline', size: 'sm',
+          onClick: () => toast({ message: 'New update available.', variant: 'info', title: 'Info' })
+        }, 'Info Toast'),
+        e(Button, {
+          variant: 'ghost', size: 'sm',
+          onClick: () => toast({ message: 'A neutral notification.' })
+        }, 'Default Toast'),
+      );
+    }
+
+    /* ── Main App ────────────────────────────────────────────── */
+    function App() {
+      const [modalOpen, setModalOpen] = React.useState(false);
+      const [modalSize, setModalSize] = React.useState('md');
+
+      return e(ToastProvider, { position: 'top-right' },
+
+        /* MODAL SECTION */
+        e('h2', null, 'Modal'),
+        e('h3', null, 'Open by size'),
+        e('div', { className: 'test-row' },
+          ...['sm', 'md', 'lg'].map(s =>
+            e(Button, {
+              key: s, variant: 'outline', size: 'sm',
+              onClick: () => { setModalSize(s); setModalOpen(true); }
+            }, `Open ${s.toUpperCase()}`)
+          )
+        ),
+
+        e(Modal, {
+          open: modalOpen,
+          onClose: () => setModalOpen(false),
+          title: `Modal — ${modalSize.toUpperCase()}`,
+          size: modalSize,
+          footer: e(React.Fragment, null,
+            e(Button, { variant: 'ghost', size: 'sm', onClick: () => setModalOpen(false) }, 'Cancel'),
+            e(Button, { variant: 'primary', size: 'sm', onClick: () => setModalOpen(false) }, 'Confirm'),
+          ),
+        },
+          e('p', { style: { marginBottom: 16 } },
+            'This modal has a ', e('strong', null, 'focus trap'),
+            ' — pressing Tab cycles through focusable elements. Press ',
+            e('strong', null, 'Escape'), ' or click the overlay to close.'
+          ),
+          e(Input, { label: 'Test Focus Trap', placeholder: 'Try tabbing here', fullWidth: true }),
+        ),
+
+        /* TABS SECTION */
+        e('h2', null, 'Tabs'),
+
+        e('h3', null, 'Default (md)'),
+        e(Tabs, {
+          items: [
+            { key: 'overview', label: 'Overview', content: e('p', null, 'This is the overview panel. Tab content is rendered lazily.') },
+            { key: 'usage', label: 'Usage', content: e('p', null, "Import the component and use it. It's that simple.") },
+            { key: 'api', label: 'API Reference', content: e('p', null, 'Check the props table below for all available options.') },
+            { key: 'disabled', label: 'Disabled Tab', content: e('p', null, "You shouldn't see this."), disabled: true },
+          ],
+        }),
+
+        e('h3', null, 'Small size'),
+        e(Tabs, {
+          size: 'sm',
+          items: [
+            { key: 'a', label: 'Alpha', content: e('p', null, 'Small tabs are compact for dense layouts.') },
+            { key: 'b', label: 'Beta', content: e('p', null, 'Second panel in small size.') },
+          ],
+        }),
+
+        e('h3', null, 'Large size'),
+        e(Tabs, {
+          size: 'lg',
+          items: [
+            { key: 'x', label: 'Dashboard', content: e('p', null, 'Large tabs work well for top-level navigation.') },
+            { key: 'y', label: 'Settings', content: e('p', null, 'Settings panel content goes here.') },
+          ],
+        }),
+
+        /* TOAST SECTION */
+        e('h2', null, 'Toast'),
+        e('p', { style: { marginBottom: 12, fontSize: 14, color: '#666' } },
+          'Click buttons to trigger toasts. They auto-dismiss after 4 seconds with a progress bar.'),
+        e(ToastDemo),
+
+        /* DROPDOWN SECTION */
+        e('h2', null, 'Dropdown'),
+
+        e('h3', null, 'Default'),
+        e('div', { className: 'test-row' },
+          e(Dropdown, {
+            trigger: 'Actions',
+            items: [
+              { key: 'edit', label: 'Edit', icon: '✏️' },
+              { key: 'duplicate', label: 'Duplicate', icon: '📋' },
+              { key: 'archive', label: 'Archive', icon: '📦', disabled: true },
+              { key: 'div1', divider: true },
+              { key: 'delete', label: 'Delete', icon: '🗑️', danger: true },
+            ],
+            onSelect: (key) => alert(`Selected: ${key}`),
+          }),
+          e(Dropdown, {
+            trigger: 'Size SM', size: 'sm',
+            items: [
+              { key: '1', label: 'Option One' },
+              { key: '2', label: 'Option Two' },
+              { key: '3', label: 'Option Three' },
+            ],
+            onSelect: (key) => alert(`Selected: ${key}`),
+          }),
+          e(Dropdown, {
+            trigger: 'Size LG', size: 'lg',
+            items: [
+              { key: '1', label: 'Large Option A' },
+              { key: '2', label: 'Large Option B' },
+            ],
+            onSelect: (key) => alert(`Selected: ${key}`),
+          }),
+        ),
+
+        e('h3', null, 'Disabled'),
+        e('div', { className: 'test-row' },
+          e(Dropdown, {
+            trigger: 'Disabled', disabled: true,
+            items: [{ key: '1', label: 'Never shown' }],
+          }),
+        ),
+
+        /* INTEGRATION TEST */
+        e('h2', null, 'Integration: Settings Panel'),
+        e(Card, { padding: 'lg' },
+          e('div', { style: { display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 20 } },
+            e('div', null,
+              e(Badge, { variant: 'info', dot: true }, 'Settings'),
+              e('h3', { style: { fontWeight: 900, fontSize: 20, marginTop: 8 } }, 'Account Preferences'),
+            ),
+            e(Dropdown, {
+              trigger: 'More', alignRight: true,
+              items: [
+                { key: 'export', label: 'Export Data' },
+                { key: 'reset', label: 'Reset Defaults', danger: true },
+              ],
+              onSelect: (key) => alert(key),
+            }),
+          ),
+          e(Tabs, {
+            items: [
+              {
+                key: 'profile', label: 'Profile',
+                content: e('div', { style: { display: 'flex', flexDirection: 'column', gap: 16 } },
+                  e(Input, { label: 'Display Name', placeholder: 'John Doe', fullWidth: true }),
+                  e(Input, { label: 'Email', type: 'email', placeholder: 'john@example.com', fullWidth: true }),
+                  e(Button, { variant: 'primary' }, 'Save Changes'),
+                ),
+              },
+              {
+                key: 'security', label: 'Security',
+                content: e('div', { style: { display: 'flex', flexDirection: 'column', gap: 16 } },
+                  e(Input, { label: 'Current Password', type: 'password', placeholder: '••••••••', fullWidth: true }),
+                  e(Input, { label: 'New Password', type: 'password', placeholder: '••••••••', fullWidth: true }),
+                  e(Button, { variant: 'danger' }, 'Update Password'),
+                ),
+              },
+            ],
+          }),
+        ),
+      );
+    }
+
+    const root = createRoot(document.getElementById('app'));
+    root.render(e(App));
+  </script>
+</body>
+</html>

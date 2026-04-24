@@ -1,0 +1,114 @@
+/* ============================================================
+   StarKit — Modal Styles
+   Requires: shared.css
+   ============================================================ */
+
+/* ── Overlay ─────────────────────────────────────────────────── */
+
+.brut-modal-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--brut-space-6);
+  background: rgba(0, 0, 0, 0.5);
+  animation: brut-modal-overlay-in 150ms ease;
+}
+
+@keyframes brut-modal-overlay-in {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+/* ── Content ─────────────────────────────────────────────────── */
+
+.brut-modal {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  max-height: calc(100vh - var(--brut-space-12));
+  width: 100%;
+  background: var(--brut-white);
+  animation: brut-modal-in 150ms ease;
+}
+
+@keyframes brut-modal-in {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ── Sizes ───────────────────────────────────────────────────── */
+
+.brut-modal--sm { max-width: 400px; }
+.brut-modal--md { max-width: 560px; }
+.brut-modal--lg { max-width: 720px; }
+
+/* ── Header ──────────────────────────────────────────────────── */
+
+.brut-modal__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--brut-space-4) var(--brut-space-5);
+  border-bottom: var(--brut-border);
+}
+
+.brut-modal__title {
+  font-family: var(--brut-font-family);
+  font-size: var(--brut-font-size-lg);
+  font-weight: var(--brut-font-weight-black);
+  line-height: 1.2;
+  margin: 0;
+}
+
+/* ── Close Button ────────────────────────────────────────────── */
+
+.brut-modal__close {
+  appearance: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  padding: 0;
+  background: var(--brut-white);
+  cursor: pointer;
+  font-size: 18px;
+  font-weight: var(--brut-font-weight-bold);
+  line-height: 1;
+  flex-shrink: 0;
+}
+
+.brut-modal__close:hover {
+  background: var(--brut-gray);
+}
+
+/* ── Body ────────────────────────────────────────────────────── */
+
+.brut-modal__body {
+  padding: var(--brut-space-5);
+  overflow-y: auto;
+  flex: 1;
+  font-family: var(--brut-font-family);
+  font-size: var(--brut-font-size-md);
+  line-height: 1.6;
+}
+
+/* ── Footer ──────────────────────────────────────────────────── */
+
+.brut-modal__footer {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: var(--brut-space-2);
+  padding: var(--brut-space-4) var(--brut-space-5);
+  border-top: var(--brut-border);
+}

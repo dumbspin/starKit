@@ -1,0 +1,61 @@
+/* ============================================================
+   StarKit — Shared Utility Classes
+   Reusable patterns for the Neo-Brutalist design system.
+   ============================================================ */
+
+/* ── Structure (Zero Radius, Bold Borders) ─────────────────── */
+.brut-structural {
+  border: var(--brut-border);
+  border-radius: var(--brut-radius);
+  color: var(--brut-black);
+}
+
+/* ── Shadow Variants (Hard Shadows) ────────────────────────── */
+.brut-shadow-sm {
+  box-shadow: var(--brut-shadow-sm);
+}
+
+.brut-shadow-md {
+  box-shadow: var(--brut-shadow-md);
+}
+
+.brut-shadow-lg {
+  box-shadow: var(--brut-shadow-lg);
+}
+
+/* ── Interaction (Fast Snappy Hover/Active) ────────────────── */
+.brut-interactive {
+  transition:
+    transform var(--brut-transition-fast),
+    box-shadow var(--brut-transition-fast),
+    background-color var(--brut-transition-fast);
+}
+
+/* Base hover: translate 2px to bottom-right */
+.brut-interactive:hover:not(:disabled) {
+  transform: translate(2px, 2px);
+  /* The element using this class MUST define its own hover box-shadow size
+     because primary relies on shadow-sm on hover, outline on shadow-sm, etc. 
+     We'll set the default fallback here. */
+  box-shadow: var(--brut-shadow-hover);
+}
+
+/* Base active: translate 4px, shadow disappears */
+.brut-interactive:active:not(:disabled) {
+  transform: translate(4px, 4px);
+  box-shadow: var(--brut-shadow-none);
+}
+
+/* Disabled state */
+.brut-interactive:disabled {
+  opacity: var(--brut-disabled-opacity);
+  cursor: not-allowed;
+  box-shadow: var(--brut-shadow-none);
+  transform: none;
+}
+
+/* Focus */
+.brut-focusable:focus-visible {
+  outline: var(--brut-focus-outline);
+  outline-offset: var(--brut-focus-offset);
+}

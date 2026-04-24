@@ -1,0 +1,5 @@
+{
+  "dependencies": {
+    "starkit": "file:../packages/core"
+  }
+}
