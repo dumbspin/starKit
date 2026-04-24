@@ -1,6 +1,5 @@
 import React from "react";
 import Link from "next/link";
-import { DocParts } from "../../components/DocParts";
 
 export default function TemplatesDocs() {
   return (

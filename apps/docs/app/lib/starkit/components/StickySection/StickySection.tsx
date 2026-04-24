@@ -3,7 +3,7 @@
 import React, { useEffect, useRef, useState, type HTMLAttributes } from 'react';
 import './sticky-section.css';
 
-export interface StickySectionProps extends HTMLAttributes<HTMLDivElement> {
+export interface StickySectionProps extends Omit<HTMLAttributes<HTMLDivElement>, 'children'> {
   /** The height of the scrolling track (e.g., '300vh') */
   trackHeight?: string;
   /** Function as child to receive scroll progress [0, 1] */

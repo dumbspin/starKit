@@ -115,7 +115,7 @@ export default function DashboardPreview() {
               </Card>
               <Card padding="lg">
                 <h3 style={{ marginBottom: "16px" }}>System Status</h3>
-                <Badge variant="success" dot size="lg">Operational</Badge>
+                <Badge variant="success" dot size="md">Operational</Badge>
               </Card>
             </>
           )}

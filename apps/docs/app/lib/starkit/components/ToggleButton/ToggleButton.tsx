@@ -3,7 +3,7 @@
 import React, { forwardRef, useState, useCallback } from 'react';
 import { Button, type ButtonProps } from '../Button';
 
-export interface ToggleButtonProps extends Omit<ButtonProps, 'onClick'> {
+export interface ToggleButtonProps extends Omit<ButtonProps, 'onClick' | 'onToggle'> {
   /** Uncontrolled default pressed state */
   defaultPressed?: boolean;
   /** Controlled pressed state */

@@ -18,10 +18,10 @@ export default function PlaygroundPage() {
   const [inpVariant, setInpVariant] = useState<"default" | "outline">("default");
   const [inpSize, setInpSize] = useState<"sm" | "md" | "lg">("md");
   const [inpDisabled, setInpDisabled] = useState(false);
-  const [inpError, setInpError] = useState(false);
+  const [inpError, setInpError] = useState("");
 
   // Badge State
-  const [bdgVariant, setBdgVariant] = useState<"default" | "primary" | "success" | "danger" | "warning" | "outline">("primary");
+  const [bdgVariant, setBdgVariant] = useState<"default" | "danger" | "success" | "info" | "outline">("default");
 
   // Code Generation
   const generateButtonCode = () => {
@@ -137,7 +137,7 @@ export default function PlaygroundPage() {
                   <input type="checkbox" checked={inpDisabled} onChange={(e) => setInpDisabled(e.target.checked)} /> Disabled
                 </label>
                 <label style={{ display: "flex", alignItems: "center", gap: "8px", cursor: "pointer" }}>
-                  <input type="checkbox" checked={inpError} onChange={(e) => setInpError(e.target.checked)} /> Error State
+                  <input type="checkbox" checked={!!inpError} onChange={(e) => setInpError(e.target.checked ? "This field has an error" : "")} /> Error State
                 </label>
               </div>
             </div>
@@ -149,10 +149,9 @@ export default function PlaygroundPage() {
               <FormField label="Variant">
                 <select value={bdgVariant} onChange={(e) => setBdgVariant(e.target.value as any)} style={{ padding: "8px", border: "var(--brut-border)", backgroundColor: "#fff", width: "100%", fontSize: "16px", borderRadius: "0", cursor: "pointer" }}>
                   <option value="default">Default</option>
-                  <option value="primary">Primary</option>
                   <option value="success">Success</option>
                   <option value="danger">Danger</option>
-                  <option value="warning">Warning</option>
+                  <option value="info">Info</option>
                   <option value="outline">Outline</option>
                 </select>
               </FormField>
@@ -184,7 +183,7 @@ export default function PlaygroundPage() {
                   variant={inpVariant}
                   size={inpSize}
                   disabled={inpDisabled}
-                  error={inpError}
+                  error={inpError || undefined}
                 />
               </div>
             )}

@@ -21,9 +21,9 @@ export default function PortfolioTemplate() {
         
         {/* Hero Section */}
         <section style={{ textAlign: "center", padding: "80px 0" }}>
-          <Badge variant="primary" style={{ marginBottom: "24px" }}>Available for Work</Badge>
+          <Badge variant="info" style={{ marginBottom: "24px" }}>Available for Work</Badge>
           <div style={{ fontSize: "64px", fontWeight: 900, lineHeight: 1.1, marginBottom: "24px" }}>
-            <GlitchText text="CREATIVE DEVELOPER" intensity="high" />
+            <GlitchText text="CREATIVE DEVELOPER" intensity="intense" />
           </div>
           <p style={{ fontSize: "24px", maxWidth: "600px", margin: "0 auto 40px", opacity: 0.8 }}>
             I build digital experiences that are brutal, fast, and accessible.
@@ -47,7 +47,7 @@ export default function PortfolioTemplate() {
                   <Badge>React</Badge>
                   <Badge>TypeScript</Badge>
                 </div>
-                <Button variant="secondary" style={{ alignSelf: "flex-start" }}>Case Study</Button>
+                <Button variant="outline" style={{ alignSelf: "flex-start" }}>Case Study</Button>
               </div>
             </Card>
 
