@@ -97,7 +97,7 @@ function App() {
               
               {/* Formspree integration for easy email delivery */}
               <form 
-                action="https://formspree.io/f/mnnqpwqk" 
+                action="https://formspree.io/f/xeevdplb" 
                 method="POST" 
                 style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}
               >

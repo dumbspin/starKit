@@ -106,7 +106,7 @@ export default function Home() {
           <section className="doc-suggestion">
             <h2 className="doc-suggestion__title">Have an idea?</h2>
             <p className="doc-suggestion__desc">Send us your suggestions or new component ideas!</p>
-            <form action="https://formspree.io/f/mnnqpwqk" method="POST" className="doc-suggestion__form">
+            <form action="https://formspree.io/f/xeevdplb" method="POST" className="doc-suggestion__form">
               <input 
                 name="email" 
                 type="email" 
