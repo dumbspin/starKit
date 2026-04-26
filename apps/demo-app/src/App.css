@@ -27,6 +27,14 @@
   opacity: 0.7;
 }
 
+.section-title {
+  font-size: var(--brut-font-size-2xl);
+  font-weight: var(--brut-font-weight-black);
+  margin-bottom: var(--brut-space-6);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
 /* Specific demo layout adjustments */
 .registration-section {
   display: flex;

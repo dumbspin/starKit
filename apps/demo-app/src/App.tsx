@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Button, Input, Card, Badge } from 'starkit';
+import { Button, Input, Card, Badge, Accordion } from 'starkit';
 import 'starkit/styles';
 import './App.css';
 
@@ -17,6 +17,24 @@ function App() {
     }, 2000);
   };
 
+  const faqItems = [
+    {
+      key: '1',
+      label: 'What is Neo-Brutalism?',
+      content: 'Neo-brutalism is a design style that embraces raw, unpolished elements. It features high-contrast colors, bold borders, and hard shadows, moving away from the soft gradients and rounded corners of typical modern UI.',
+    },
+    {
+      key: '2',
+      label: 'Is StarKit production ready?',
+      content: 'Yes! StarKit components are built with React and are fully accessible, following ARIA guidelines. It includes essential patterns like focus traps for modals and keyboard navigation for tabs.',
+    },
+    {
+      key: '3',
+      label: 'Can I use it with Tailwind?',
+      content: 'Absolutely. While StarKit provides its own CSS variables, you can easily map them to your Tailwind config or use StarKit components alongside Tailwind utility classes.',
+    },
+  ];
+
   return (
     <div className="starkit brut-container">
       <header className="app-header">
@@ -25,46 +43,86 @@ function App() {
       </header>
 
       <div className="brut-grid brut-grid--sidebar">
-        <section className="registration-section">
-          <Card padding="lg">
-            <h2 style={{ fontWeight: 900, marginBottom: '24px' }}>Registration Form</h2>
-            <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', gap: '20px' }}>
-              <Input 
-                label="Full Name" 
-                placeholder="John Doe" 
-                fullWidth 
-                required 
-              />
-              <Input 
-                label="Email Address" 
-                type="email" 
-                placeholder="john@example.com" 
-                fullWidth 
-                required 
-                hint="We'll send a confirmation link."
-              />
-              <Input 
-                label="Password" 
-                type="password" 
-                placeholder="••••••••" 
-                fullWidth 
-                required 
-              />
+        <div className="registration-section">
+          <section>
+            <Card padding="lg">
+              <h2 style={{ fontWeight: 900, marginBottom: '24px' }}>Registration Form</h2>
+              <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', gap: '20px' }}>
+                <Input 
+                  label="Full Name" 
+                  placeholder="John Doe" 
+                  fullWidth 
+                  required 
+                />
+                <Input 
+                  label="Email Address" 
+                  type="email" 
+                  placeholder="john@example.com" 
+                  fullWidth 
+                  required 
+                  hint="We'll send a confirmation link."
+                />
+                <Input 
+                  label="Password" 
+                  type="password" 
+                  placeholder="••••••••" 
+                  fullWidth 
+                  required 
+                />
+                
+                <div style={{ marginTop: '12px' }}>
+                  <Button 
+                    type="submit" 
+                    variant="primary" 
+                    size="lg" 
+                    loading={loading}
+                    fullWidth
+                  >
+                    {submitted ? 'Success!' : 'Create Account'}
+                  </Button>
+                </div>
+              </form>
+            </Card>
+          </section>
+
+          <section className="faq-section" style={{ marginTop: '48px' }}>
+            <h2 className="section-title">Frequently Asked Questions</h2>
+            <Accordion items={faqItems} bordered size="lg" />
+          </section>
+
+          <section className="suggestions-section" style={{ marginTop: '48px' }}>
+            <Card padding="lg" variant="filled" style={{ background: 'var(--brut-blue)', color: 'var(--brut-white)' }}>
+              <h2 style={{ fontWeight: 900, marginBottom: '8px', color: 'inherit' }}>Have an idea?</h2>
+              <p style={{ marginBottom: '24px', opacity: 0.9 }}>Send us your suggestions or new component ideas!</p>
               
-              <div style={{ marginTop: '12px' }}>
-                <Button 
-                  type="submit" 
-                  variant="primary" 
-                  size="lg" 
-                  loading={loading}
+              {/* Formspree integration for easy email delivery */}
+              <form 
+                action="https://formspree.io/f/mnnqpwqk" 
+                method="POST" 
+                style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}
+              >
+                <Input 
+                  name="email"
+                  type="email"
+                  placeholder="your@email.com"
                   fullWidth
-                >
-                  {submitted ? 'Success!' : 'Create Account'}
+                  required
+                  style={{ background: 'var(--brut-white)', color: 'var(--brut-black)' }}
+                />
+                <Input 
+                  name="suggestion"
+                  placeholder="What should we add next?"
+                  fullWidth
+                  required
+                  style={{ background: 'var(--brut-white)', color: 'var(--brut-black)' }}
+                />
+                <Button variant="outline" type="submit" style={{ background: 'var(--brut-black)', color: 'var(--brut-white)' }}>
+                  Send Suggestion
                 </Button>
-              </div>
-            </form>
-          </Card>
-        </section>
+              </form>
+            </Card>
+          </section>
+        </div>
 
         <aside className="status-sidebar">
           <Card variant="inset" padding="md">
