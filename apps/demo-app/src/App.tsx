@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { Button, Input, Card, Badge } from 'starkit';
 import 'starkit/styles';
+import './App.css';
 
 function App() {
   const [loading, setLoading] = useState(false);
@@ -17,14 +18,14 @@ function App() {
   };
 
   return (
-    <div className="starkit" style={{ padding: '40px', maxWidth: '800px', margin: '0 auto' }}>
-      <header style={{ marginBottom: '40px' }}>
-        <h1 style={{ fontSize: '48px', fontWeight: 900, marginBottom: '8px' }}>⚡ StarKit Demo</h1>
-        <p style={{ opacity: 0.7 }}>Production-ready neo-brutalist components.</p>
+    <div className="starkit brut-container">
+      <header className="app-header">
+        <h1 className="app-title">⚡ StarKit Demo</h1>
+        <p className="app-subtitle">Production-ready neo-brutalist components.</p>
       </header>
 
-      <div style={{ display: 'grid', gridTemplateColumns: '1fr 300px', gap: '32px' }}>
-        <section>
+      <div className="brut-grid brut-grid--sidebar">
+        <section className="registration-section">
           <Card padding="lg">
             <h2 style={{ fontWeight: 900, marginBottom: '24px' }}>Registration Form</h2>
             <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', gap: '20px' }}>
@@ -65,21 +66,21 @@ function App() {
           </Card>
         </section>
 
-        <aside style={{ display: 'flex', flexDirection: 'column', gap: '24px' }}>
+        <aside className="status-sidebar">
           <Card variant="inset" padding="md">
             <h3 style={{ fontWeight: 900, fontSize: '14px', marginBottom: '12px', textTransform: 'uppercase' }}>
               System Status
             </h3>
-            <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
-              <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+            <div className="brut-stack" style={{ gap: '12px' }}>
+              <div className="brut-flex-row" style={{ flexDirection: 'row', alignItems: 'center' }}>
                 <span style={{ fontSize: '14px' }}>API Server</span>
                 <Badge variant="success" dot>Online</Badge>
               </div>
-              <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+              <div className="brut-flex-row" style={{ flexDirection: 'row', alignItems: 'center' }}>
                 <span style={{ fontSize: '14px' }}>Database</span>
                 <Badge variant="success" dot>Stable</Badge>
               </div>
-              <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+              <div className="brut-flex-row" style={{ flexDirection: 'row', alignItems: 'center' }}>
                 <span style={{ fontSize: '14px' }}>Auth Service</span>
                 <Badge variant="info">Maintenance</Badge>
               </div>
