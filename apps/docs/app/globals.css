@@ -635,6 +635,119 @@ code {
   color: var(--doc-gray-600);
 }
 
+/* ── FAQ Section ───────────────────────────────────────────── */
+.doc-faq {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  text-align: left;
+}
+
+.doc-faq__item {
+  border: var(--doc-border);
+  background: var(--doc-white);
+  box-shadow: var(--doc-shadow-sm);
+}
+
+.doc-faq__trigger {
+  padding: 16px 24px;
+  font-weight: 700;
+  cursor: pointer;
+  list-style: none;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  user-select: none;
+}
+
+.doc-faq__trigger::-webkit-details-marker {
+  display: none;
+}
+
+.doc-faq__trigger::after {
+  content: '▼';
+  font-size: 12px;
+  transition: transform 0.2s ease;
+}
+
+.doc-faq__item[open] .doc-faq__trigger::after {
+  transform: rotate(180deg);
+}
+
+.doc-faq__trigger:hover {
+  background: var(--doc-gray);
+}
+
+.doc-faq__content {
+  padding: 0 24px 24px;
+  font-size: 15px;
+  color: var(--doc-gray-600);
+}
+
+/* ── Suggestion Card ───────────────────────────────────────── */
+.doc-suggestion {
+  margin-top: 64px;
+  padding: 48px;
+  background: var(--doc-blue);
+  color: var(--doc-white);
+  border: var(--doc-border-thick);
+  box-shadow: var(--doc-shadow-lg);
+  text-align: center;
+}
+
+.doc-suggestion__title {
+  font-size: 32px;
+  font-weight: 700;
+  margin-bottom: 12px;
+  letter-spacing: -1px;
+}
+
+.doc-suggestion__desc {
+  font-size: 18px;
+  margin-bottom: 32px;
+  opacity: 0.9;
+}
+
+.doc-suggestion__form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+.doc-suggestion__input {
+  padding: 14px 20px;
+  font-family: var(--doc-font);
+  font-size: 16px;
+  border: var(--doc-border);
+  box-shadow: var(--doc-shadow-sm);
+  outline: none;
+}
+
+.doc-suggestion__input:focus {
+  box-shadow: var(--doc-shadow-md);
+  transform: translate(-1px, -1px);
+}
+
+.doc-suggestion__btn {
+  padding: 14px 32px;
+  font-family: var(--doc-font);
+  font-weight: 700;
+  font-size: 16px;
+  background: var(--doc-black);
+  color: var(--doc-white);
+  border: var(--doc-border);
+  box-shadow: var(--doc-shadow-sm);
+  cursor: pointer;
+  transition: all 80ms ease;
+}
+
+.doc-suggestion__btn:hover {
+  transform: translate(2px, 2px);
+  box-shadow: none;
+}
+
 /* ── Responsive ────────────────────────────────────────────── */
 @media (max-width: 768px) {
   .doc-header {
@@ -660,5 +773,9 @@ code {
   .doc-hero__actions {
     flex-direction: column;
     align-items: center;
+  }
+
+  .doc-suggestion {
+    padding: 32px 20px;
   }
 }

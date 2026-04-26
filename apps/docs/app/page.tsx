@@ -75,6 +75,57 @@ export default function Home() {
             </div>
           </div>
         </div>
+
+        <div style={{ marginTop: '80px', width: '100%', maxWidth: '800px' }}>
+          <section className="doc-section">
+            <h2 className="doc-section__title" style={{ border: 'none', fontSize: '32px', marginBottom: '32px' }}>
+              Frequently Asked Questions
+            </h2>
+            <div className="doc-faq">
+              <details className="doc-faq__item">
+                <summary className="doc-faq__trigger">What is Neo-Brutalism?</summary>
+                <div className="doc-faq__content">
+                  Neo-brutalism is a design style that embraces raw, unpolished elements. It features high-contrast colors, bold borders, and hard shadows, moving away from the soft gradients and rounded corners of typical modern UI.
+                </div>
+              </details>
+              <details className="doc-faq__item">
+                <summary className="doc-faq__trigger">Is StarKit production ready?</summary>
+                <div className="doc-faq__content">
+                  Yes! StarKit components are built with React and are fully accessible, following ARIA guidelines. It includes essential patterns like focus traps for modals and keyboard navigation for tabs.
+                </div>
+              </details>
+              <details className="doc-faq__item">
+                <summary className="doc-faq__trigger">Can I use it with Tailwind?</summary>
+                <div className="doc-faq__content">
+                  Absolutely. While StarKit provides its own CSS variables, you can easily map them to your Tailwind config or use StarKit components alongside Tailwind utility classes.
+                </div>
+              </details>
+            </div>
+          </section>
+
+          <section className="doc-suggestion">
+            <h2 className="doc-suggestion__title">Have an idea?</h2>
+            <p className="doc-suggestion__desc">Send us your suggestions or new component ideas!</p>
+            <form action="https://formspree.io/f/mnnqpwqk" method="POST" className="doc-suggestion__form">
+              <input 
+                name="email" 
+                type="email" 
+                placeholder="your@email.com" 
+                required 
+                className="doc-suggestion__input"
+              />
+              <input 
+                name="suggestion" 
+                placeholder="What should we add next?" 
+                required 
+                className="doc-suggestion__input"
+              />
+              <button type="submit" className="doc-suggestion__btn">
+                Send Suggestion
+              </button>
+            </form>
+          </section>
+        </div>
       </section>
     </>
   );
